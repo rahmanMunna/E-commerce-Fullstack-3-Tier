@@ -1,0 +1,14 @@
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\BLL.dll
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\BLL.pdb
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\AutoMapper.dll
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\DAL.dll
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\EntityFramework.dll
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\DAL.pdb
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\DAL.dll.config
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\AutoMapper.xml
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\bin\Debug\EntityFramework.xml
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\obj\Debug\BLL.csproj.Up2Date
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\obj\Debug\BLL.dll
+E:\ASP.NET Project\EcommerceWebAPI\Backend\BLL\obj\Debug\BLL.pdb

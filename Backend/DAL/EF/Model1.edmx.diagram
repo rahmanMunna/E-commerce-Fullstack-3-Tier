@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6054b61a8b94571af9b39cdd4da72ad" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Category" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.OrderDetail" Width="1.5" PointX="5.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.OrderStatus" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.PaymentMethod" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.PaymentStatus" Width="1.5" PointX="6" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_OrderDetails_Products" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.OrderTracker" Width="1.5" PointX="7" PointY="8.125" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Customer" Width="1.5" PointX="2.75" PointY="8.875" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Deliveryman" Width="1.5" PointX="2.75" PointY="16.375" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.ShippingAddress" Width="1.5" PointX="2.75" PointY="13.25" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.User" Width="1.5" PointX="0.5" PointY="12.75" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Customers_ShippingAddresses" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Customers_Users" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Deliverymen_Users" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Payment" Width="1.5" PointX="9.25" PointY="5.875" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.TransactionType" Width="1.5" PointX="7" PointY="15.625" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Payments_PaymentMethods" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Payments_PaymentStatuses" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Payments_TransactionTypes" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Order" Width="1.5" PointX="10" PointY="10" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Orders_Customers" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Orders_Deliverymen" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_OrderDetails_Orders" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Payments_Orders" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

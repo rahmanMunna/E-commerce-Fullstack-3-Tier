@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EcommerceMSWebAPIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="OrderPrice" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
+    <NavigationProperty Name="Order" Relationship="EcommerceMSWebAPIModel.FK_OrderDetails_Orders" FromRole="OrderDetail" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses" FromRole="OrderStatus" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Method" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Payments" Relationship="EcommerceMSWebAPIModel.FK_Payments_PaymentMethods" FromRole="PaymentMethod" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="PaymentStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Payments" Relationship="EcommerceMSWebAPIModel.FK_Payments_PaymentStatuses" FromRole="PaymentStatus" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StockQty" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="Discount" Type="Double" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
+  </EntityType>
+  <Association Name="FK_Products_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Products">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EcommerceMSWebAPIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderStatuses" EntityType="Self.OrderStatus" />
+    <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="PaymentStatuses" EntityType="Self.PaymentStatus" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <EntitySet Name="OrderTrackers" EntityType="EcommerceMSWebAPIModel.OrderTracker" />
+    <EntitySet Name="Customers" EntityType="EcommerceMSWebAPIModel.Customer" />
+    <EntitySet Name="Deliverymen" EntityType="EcommerceMSWebAPIModel.Deliveryman" />
+    <EntitySet Name="ShippingAddresses" EntityType="EcommerceMSWebAPIModel.ShippingAddress" />
+    <EntitySet Name="Users" EntityType="EcommerceMSWebAPIModel.User" />
+    <AssociationSet Name="FK_Customers_ShippingAddresses" Association="EcommerceMSWebAPIModel.FK_Customers_ShippingAddresses">
+      <End Role="ShippingAddress" EntitySet="ShippingAddresses" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Users" Association="EcommerceMSWebAPIModel.FK_Customers_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deliverymen_Users" Association="EcommerceMSWebAPIModel.FK_Deliverymen_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Deliveryman" EntitySet="Deliverymen" />
+    </AssociationSet>
+    <EntitySet Name="Payments" EntityType="EcommerceMSWebAPIModel.Payment" />
+    <EntitySet Name="TransactionTypes" EntityType="EcommerceMSWebAPIModel.TransactionType" />
+    <AssociationSet Name="FK_Payments_PaymentMethods" Association="EcommerceMSWebAPIModel.FK_Payments_PaymentMethods">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_PaymentStatuses" Association="EcommerceMSWebAPIModel.FK_Payments_PaymentStatuses">
+      <End Role="PaymentStatus" EntitySet="PaymentStatuses" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_TransactionTypes" Association="EcommerceMSWebAPIModel.FK_Payments_TransactionTypes">
+      <End Role="TransactionType" EntitySet="TransactionTypes" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="EcommerceMSWebAPIModel.Order" />
+    <AssociationSet Name="FK_Orders_Customers" Association="EcommerceMSWebAPIModel.FK_Orders_Customers">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Deliverymen" Association="EcommerceMSWebAPIModel.FK_Orders_Deliverymen">
+      <End Role="Deliveryman" EntitySet="Deliverymen" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Orders" Association="EcommerceMSWebAPIModel.FK_OrderDetails_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_OrderStatuses" Association="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses">
+      <End Role="OrderStatus" EntitySet="OrderStatuses" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderTrackers_Orders" Association="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderTracker" EntitySet="OrderTrackers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_Orders" Association="EcommerceMSWebAPIModel.FK_Payments_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="OrderTracker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AssignedAt" Type="DateTime" Precision="3" />
+    <Property Name="DeliveredAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders" FromRole="OrderTracker" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ShippingAddressId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShippingAddress" Relationship="EcommerceMSWebAPIModel.FK_Customers_ShippingAddresses" FromRole="Customer" ToRole="ShippingAddress" />
+    <NavigationProperty Name="User" Relationship="EcommerceMSWebAPIModel.FK_Customers_Users" FromRole="Customer" ToRole="User" />
+    <NavigationProperty Name="Orders" Relationship="EcommerceMSWebAPIModel.FK_Orders_Customers" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Deliveryman">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="EcommerceMSWebAPIModel.FK_Deliverymen_Users" FromRole="Deliveryman" ToRole="User" />
+    <NavigationProperty Name="Orders" Relationship="EcommerceMSWebAPIModel.FK_Orders_Deliverymen" FromRole="Deliveryman" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="ShippingAddress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="EcommerceMSWebAPIModel.FK_Customers_ShippingAddresses" FromRole="ShippingAddress" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="EcommerceMSWebAPIModel.FK_Customers_Users" FromRole="User" ToRole="Customer" />
+    <NavigationProperty Name="Deliverymen" Relationship="EcommerceMSWebAPIModel.FK_Deliverymen_Users" FromRole="User" ToRole="Deliveryman" />
+  </EntityType>
+  <Association Name="FK_Customers_ShippingAddresses">
+    <End Type="EcommerceMSWebAPIModel.ShippingAddress" Role="ShippingAddress" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShippingAddress">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="ShippingAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_Users">
+    <End Type="EcommerceMSWebAPIModel.User" Role="User" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deliverymen_Users">
+    <End Type="EcommerceMSWebAPIModel.User" Role="User" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Deliveryman" Role="Deliveryman" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Deliveryman">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
+    <Property Name="ProcessedAt" Type="DateTime" Precision="3" />
+    <Property Name="TransactionTypeId" Type="Int32" />
+    <NavigationProperty Name="PaymentMethod" Relationship="EcommerceMSWebAPIModel.FK_Payments_PaymentMethods" FromRole="Payment" ToRole="PaymentMethod" />
+    <NavigationProperty Name="PaymentStatus" Relationship="EcommerceMSWebAPIModel.FK_Payments_PaymentStatuses" FromRole="Payment" ToRole="PaymentStatus" />
+    <NavigationProperty Name="TransactionType" Relationship="EcommerceMSWebAPIModel.FK_Payments_TransactionTypes" FromRole="Payment" ToRole="TransactionType" />
+    <NavigationProperty Name="Order" Relationship="EcommerceMSWebAPIModel.FK_Payments_Orders" FromRole="Payment" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Payments" Relationship="EcommerceMSWebAPIModel.FK_Payments_TransactionTypes" FromRole="TransactionType" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_Payments_PaymentMethods">
+    <End Type="EcommerceMSWebAPIModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_PaymentStatuses">
+    <End Type="EcommerceMSWebAPIModel.PaymentStatus" Role="PaymentStatus" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="PaymentStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_TransactionTypes">
+    <End Type="EcommerceMSWebAPIModel.TransactionType" Role="TransactionType" Multiplicity="0..1" />
+    <End Type="EcommerceMSWebAPIModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="TransactionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductTotal" Type="Double" Nullable="false" />
+    <Property Name="ShippingCharge" Type="Double" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+    <Property Name="CancelledBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CancelledAt" Type="DateTime" Precision="3" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryManId" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="EcommerceMSWebAPIModel.FK_Orders_Customers" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Deliveryman" Relationship="EcommerceMSWebAPIModel.FK_Orders_Deliverymen" FromRole="Order" ToRole="Deliveryman" />
+    <NavigationProperty Name="OrderDetails" Relationship="EcommerceMSWebAPIModel.FK_OrderDetails_Orders" FromRole="Order" ToRole="OrderDetail" />
+    <NavigationProperty Name="OrderStatus" Relationship="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses" FromRole="Order" ToRole="OrderStatus" />
+    <NavigationProperty Name="OrderTrackers" Relationship="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders" FromRole="Order" ToRole="OrderTracker" />
+    <NavigationProperty Name="Payments" Relationship="EcommerceMSWebAPIModel.FK_Payments_Orders" FromRole="Order" ToRole="Payment" />
+  </EntityType>
+  <Association Name="FK_Orders_Customers">
+    <End Type="EcommerceMSWebAPIModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Deliverymen">
+    <End Type="EcommerceMSWebAPIModel.Deliveryman" Role="Deliveryman" Multiplicity="0..1" />
+    <End Type="EcommerceMSWebAPIModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deliveryman">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DeliveryManId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Orders">
+    <End Type="EcommerceMSWebAPIModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_OrderStatuses">
+    <End Type="EcommerceMSWebAPIModel.OrderStatus" Role="OrderStatus" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderTrackers_Orders">
+    <End Type="EcommerceMSWebAPIModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.OrderTracker" Role="OrderTracker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderTracker">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_Orders">
+    <End Type="EcommerceMSWebAPIModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="EcommerceMSWebAPIModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
