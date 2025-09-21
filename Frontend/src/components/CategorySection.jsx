@@ -1,6 +1,8 @@
+
 import ProductCard from "./ProductCard";
 
 const CategorySection = ({ category }) => {
+
     return (
         <div className="container mx-auto my-12 px-4">
             {/* Category Header */}

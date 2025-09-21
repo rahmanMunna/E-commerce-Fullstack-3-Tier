@@ -4,7 +4,7 @@ import CategorySection from "../../components/CategorySection"
 const ProductList = () => {
 
     const [products, setProducts] = useState([]);
-
+    
     useEffect(() => {
         fetch("https://localhost:44381/api/product/all")
             .then(res => res.json())

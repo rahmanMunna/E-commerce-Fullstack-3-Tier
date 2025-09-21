@@ -1,7 +1,14 @@
+import { useContext } from "react";
+import CartContext from "../context/CartContext"
+
 const ProductCard = ({ product }) => {
+
+    const { addToCart } = useContext(CartContext);
+
     const discountedPrice = product.Price - product.Price * (product.Discount / 100);
 
     return (
+
         <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
 
             {/* Product Details */}
@@ -28,7 +35,7 @@ const ProductCard = ({ product }) => {
                 </p>
 
                 {/* Add to Cart Button */}
-                <button
+                <button onClick={() => addToCart(product)}
                     className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold text-white transition-all duration-300
                     ${product.StockQty > 0
                             ? "bg-gradient-to-r from-amber-800 to-indigo-500 hover:cursor-grab hover:from-blue-600 hover:to-blue-700 shadow-md hover:shadow-lg transform hover:scale-105"
