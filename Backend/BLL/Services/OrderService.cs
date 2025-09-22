@@ -20,7 +20,7 @@ namespace BLL.Services
             foreach (var item in items)
             {
                 double priceAfterDiscount = item.Price - (item.Price * item.Discount / 100);
-                total = total + priceAfterDiscount;
+                total = total + priceAfterDiscount*item.Qty;
             }
             return total;
         }

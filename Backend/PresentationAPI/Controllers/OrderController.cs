@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Results;
 
 namespace PresentationAPI.Controllers
@@ -16,7 +17,7 @@ namespace PresentationAPI.Controllers
     {
         [HttpPost]
         [Route("place")]
-
+        [EnableCors(origins: "*", headers: "*", methods: "POST")]
         public HttpResponseMessage PlaceOrder(List<CartItem> items)
         {
             try
