@@ -4,6 +4,7 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
+    // const [showModal, setShowModal] = useState(false)
 
     const addToCart = (product) => {
         const newCart = [...cart];
@@ -13,8 +14,12 @@ export const CartProvider = ({ children }) => {
         } else {
             newCart.push({ product, qty: 1 });
         }
-        setCart(newCart);
+        setCart(newCart);    
     };
+
+    // const handleShowModal = () => {
+    //     setShowModal(true);
+    // }
 
     return (
         <CartContext.Provider value={{ cart, addToCart }}>

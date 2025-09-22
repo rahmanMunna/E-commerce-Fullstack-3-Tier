@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CartContext from "../context/CartContext"
 
+
 const ProductCard = ({ product }) => {
 
     const { addToCart } = useContext(CartContext);
@@ -46,7 +47,11 @@ const ProductCard = ({ product }) => {
                     {product.StockQty > 0 ? "Add to Cart" : "Out of Stock"}
                 </button>
 
+
             </div>
+
+
+
         </div>
     );
 };
