@@ -1,4 +1,6 @@
-﻿using BLL.Models;
+﻿using BLL.DTOs;
+using BLL.Helper;
+using BLL.Models;
 using DAL;
 using DAL.EF;
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    internal class OrderDetailsService
+    public class OrderDetailService
     {
         public static bool AddOrderDetails(List<CartItem> items, int oId)
         {
@@ -27,5 +29,11 @@ namespace BLL.Services
             }
             return DataAccessFactory.OrderDetailDataExtended().InsertToOrderDetails(details);
         }
+
+        public static List<OrderDetailDTO> GetByOrderId(int oId)
+        {
+            var orderDetais = DataAccessFactory.OrderDetailDataExtended().GetByOrderId(oId);
+            return MapperHelper.GetMapper().Map<List<OrderDetailDTO>>(orderDetais);
+        }   
     }
 }

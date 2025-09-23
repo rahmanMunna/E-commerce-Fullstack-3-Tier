@@ -51,6 +51,22 @@ namespace DAL.Repos
             return order;   
 
         }
+
+        public List<Order> GetAllPlacedOrder()
+        {
+            var order = (from o in db.Orders
+                        where o.OrderStatusID == 1
+                        select o).ToList();
+            return order;
+        }
+
+        public List<Order> GetAllProcessingOrder()
+        {
+            var order = (from o in db.Orders
+                         where o.OrderStatusID == 2
+                         select o).ToList();
+            return order;
+        }
         public bool UpdateOrderStatus(int oId, int sId)
         {
             var order = this.Get(oId);
@@ -79,7 +95,8 @@ namespace DAL.Repos
             if(order != null)
             {
                 order.DeliveryManId = dId;
-                return db.SaveChanges() > 0;
+                var r =db.SaveChanges() > 0;
+                return r;
             }
             return false;   
         }

@@ -30,7 +30,7 @@ namespace DAL.Repos
             return true;
 
         }
-        public List<OrderDetail> GetByOrder(int oId)
+        public List<OrderDetail> GetByOrderId(int oId)
         {
             return db.OrderDetails.Where(od => od.OrderId == oId).ToList();
         }

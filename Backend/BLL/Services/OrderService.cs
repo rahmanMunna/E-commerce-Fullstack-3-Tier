@@ -35,7 +35,7 @@ namespace BLL.Services
             var orderCreated = AddToOrder(total);
 
             if (orderCreated != null &&
-                OrderDetailsService.AddOrderDetails(items, orderCreated.Id) &&
+                OrderDetailService.AddOrderDetails(items, orderCreated.Id) &&
                 PaymentService.AddToPayment(orderCreated.Id, total)
                 )
             {
@@ -81,16 +81,28 @@ namespace BLL.Services
         {        
             return DataAccessFactory.OrderDataExtended().UpdateOrderStatus(orderId, statusId);  
         }
-
         public static bool AssignDeliveryMan(int orderId, int deliveryManId)
         {
             var result =  DataAccessFactory.OrderDataExtended().AssignDeliveryMan(orderId, deliveryManId);
             if (result)
             {
                 return OrderStatusService.ChangeStatusToAssignedToDeliveryman(orderId);
+                //return UpdateStatus(orderId, 3); // 3 = Assigned to Deliveryman 
             }
             return result;
 
+        }
+
+        public static List<OrderDTO> GetAllPlacedOrder()
+        {
+            var orders = DataAccessFactory.OrderDataExtended().GetAllPlacedOrder();  
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);    
+        }
+
+        public static List<OrderDTO> GetAllProcessingOrder()
+        {
+            var orders = DataAccessFactory.OrderDataExtended().GetAllProcessingOrder();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
         }
     }
 }

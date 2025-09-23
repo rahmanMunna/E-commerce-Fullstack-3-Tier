@@ -79,8 +79,45 @@ namespace PresentationAPI.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Route("getPlacedOrder")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage GetAllPlacedOrder()
+        {
+            try
+            {
+                var result = OrderService.GetAllPlacedOrder();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("getProcessingOrder")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage GetAllProcessingOrder()
+        {
+            try
+            {
+                var result = OrderService.GetAllProcessingOrder();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+
+
         [HttpPut]
         [Route("processing/{id}")]
+        [EnableCors(origins: "*", headers: "*", methods: "PUT")]
         public HttpResponseMessage ProcessingOrder(int id)
         {
             try
@@ -111,6 +148,7 @@ namespace PresentationAPI.Controllers
 
         [HttpPut]
         [Route("assign")]
+        [EnableCors(origins: "*", headers: "*", methods: "PUT")]
         public HttpResponseMessage AssignDeliveryman(AssignDeliveryman obj)
         {
             try

@@ -118,7 +118,7 @@ const Cart = () => {
                                         <p>{customer.ShippingAdd}</p>
                                     </div>
                                 </div>
-
+                                {/* Order summary */}
                                 <h2 className="text-2xl font-semibold mb-4">Order Summary</h2>
                                 <div className="space-y-2">
                                     <div className="flex justify-between">
@@ -132,6 +132,22 @@ const Cart = () => {
                                     <div className="flex justify-between font-bold text-lg border-t pt-2">
                                         <span>Total:</span>
                                         <span>Tk {total.toFixed(2)}</span>
+                                    </div>
+                                </div>
+                                <hr />
+                                {/* Payment method */}
+                                <h2 className="text-2xl font-semibold mb-4">Payment</h2>
+                                <div className="space-y-2">
+                                    <div className="flex justify-between">
+                                        <span>Method</span>
+                                        <span>
+                                            <input type="radio" name="radio-1" class="radio" checked="checked" /> Cash on Delivery
+                                        </span>
+                                    </div>
+                                    
+                                    <div className="flex justify-between  ">
+                                        <span>Amount</span>
+                                        <span className='text-lg font-bold'>Tk {total.toFixed(2)}</span>
                                     </div>
                                 </div>
                             </div>

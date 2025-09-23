@@ -10,7 +10,7 @@ namespace DAL.Interfaces
     public interface IOrderDetailRepo
     {
         bool InsertToOrderDetails(List<OrderDetail> obj);
-        List<OrderDetail> GetByOrder(int oId);
+        List<OrderDetail> GetByOrderId(int oId);
 
 
     }
