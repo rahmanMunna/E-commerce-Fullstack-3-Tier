@@ -13,6 +13,8 @@ namespace DAL.Interfaces
 
         List<Order> GetAllPlacedOrder();
         List<Order> GetAllProcessingOrder();
+        List<Order> GetAllAssignedOrder();
+        List<Order> GetAllOnTheWayOrder();
 
         bool UpdateOrderStatus(int oId,int sId);
         bool CancelOrder(int oId,string name);  

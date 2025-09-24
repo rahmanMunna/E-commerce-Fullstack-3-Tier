@@ -113,6 +113,38 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("getAssignedOrder")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage GetAllAssignedOrder()
+        {
+            try
+            {
+                var result = OrderService.GetAllAssignedOrder();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("getOnTheWayOrder")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage GetAllOnTheWayOrder()
+        {
+            try
+            {
+                var result = OrderService.GetAllOnTheWayOrder();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
 
 
         [HttpPut]
@@ -123,21 +155,6 @@ namespace PresentationAPI.Controllers
             try
             {
                 var result = OrderStatusService.ChangeStatusToProcessing(id);
-                return Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
-
-        [HttpPut]
-        [Route("ontheway/{id}")]
-        public HttpResponseMessage OnTheWayOrder(int id)
-        {
-            try
-            {
-                var result = OrderStatusService.ChangeStatusToOnTheWay(id);
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
@@ -162,22 +179,39 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("ontheway/{oId}")]
+        [EnableCors(origins: "*", headers: "*", methods: "PUT")]
+        public HttpResponseMessage OnTheWayOrder(int oId)
+        {
+            try
+            {
+                var result = OrderStatusService.ChangeStatusToOnTheWay(oId);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
 
-        //[HttpPut]
-        //[Route("delivered/{id}")]
-        //public HttpResponseMessage DeliveredOrder(int id)
-        //{
-        //    try
-        //    {
-        //        var result = OrderStatusService.ChangeStatusToDelivered(id);// can be change cz. of payment confirmation
-        //        return Request.CreateResponse(HttpStatusCode.OK, result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-        //    }
-        //}
+
+        [HttpPut]
+        [Route("delivered/{oId}")]
+        [EnableCors(origins: "*", headers: "*", methods: "PUT")]
+        public HttpResponseMessage DeliveredOrder(int oId)
+        {
+            try
+            {
+                var result = OrderService.DeliveredOrder(oId);// can be change cz. of payment confirmation
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
         //[HttpPut]
         //[Route("cancelled/{id}")]

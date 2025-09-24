@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BLL.DTOs;
+using DAL;
 using DAL.EF;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,19 @@ namespace BLL.Services
 
             var paymentCreated = DataAccessFactory.PaymentData().Create(payment);
             return paymentCreated;
+        }
+        public static bool UpdateAfterDelivery(int oId)
+        {
+            var payment = new Payment()
+            {
+                OrderId = oId,
+                PaymentStatusId = 2, // Paid
+                ProcessedAt = DateTime.Now,
+                TransactionTypeId = 2 // Debit
+            };
+
+            var paymentUpdated = DataAccessFactory.PaymentData().Update(payment);
+            return paymentUpdated;
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class PaymentRepo : IRepo<Payment, bool, bool, int>
+    internal class PaymentRepo : IRepo<Payment, bool, bool, int>, IPaymentRepo
     {
         EcommerceMSWebAPIEntities db;
         public PaymentRepo()
@@ -33,12 +33,24 @@ namespace DAL.Repos
 
         public Payment Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Payments.Find(id);    
         }
 
+        public Payment GetLastPaymentByOrderId(int orderId)
+        {
+            return db.Payments.Where(p => p.OrderId == orderId).OrderByDescending(p => p.ProcessedAt).FirstOrDefault();
+        }
         public bool Update(Payment obj)
         {
-            throw new NotImplementedException();
+            var existing = GetLastPaymentByOrderId(obj.OrderId); 
+            if (existing != null)
+            {
+                existing.PaymentStatusId = obj.PaymentStatusId;
+                existing.ProcessedAt = obj.ProcessedAt;
+                existing.TransactionTypeId = obj.TransactionTypeId;
+                return db.SaveChanges() > 0;
+            }
+            return false;
         }
     }
 }

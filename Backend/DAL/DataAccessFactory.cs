@@ -43,5 +43,9 @@ namespace DAL
         {
             return new PaymentRepo();
         }
+        public static IPaymentRepo PaymentDataExtended()
+        {
+            return new PaymentRepo();
+        }
     }
 }

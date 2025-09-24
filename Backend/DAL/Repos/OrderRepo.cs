@@ -67,6 +67,21 @@ namespace DAL.Repos
                          select o).ToList();
             return order;
         }
+        public List<Order> GetAllAssignedOrder()
+        {
+            var order = (from o in db.Orders
+                         where o.OrderStatusID == 3
+                         select o).ToList();
+            return order;
+        }
+
+        public List<Order> GetAllOnTheWayOrder()
+        {
+            var order = (from o in db.Orders
+                         where o.OrderStatusID == 4
+                         select o).ToList();
+            return order;
+        }
         public bool UpdateOrderStatus(int oId, int sId)
         {
             var order = this.Get(oId);

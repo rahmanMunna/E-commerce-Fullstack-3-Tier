@@ -20,7 +20,7 @@ namespace BLL.Services
             foreach (var item in items)
             {
                 double priceAfterDiscount = item.Price - (item.Price * item.Discount / 100);
-                total = total + priceAfterDiscount*item.Qty;
+                total = total + priceAfterDiscount * item.Qty;
             }
             return total;
         }
@@ -77,13 +77,33 @@ namespace BLL.Services
             }
             return null;
         }
+        public static List<OrderDTO> GetAllPlacedOrder()
+        {
+            var orders = DataAccessFactory.OrderDataExtended().GetAllPlacedOrder();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
+        }
+        public static List<OrderDTO> GetAllProcessingOrder()
+        {
+            var orders = DataAccessFactory.OrderDataExtended().GetAllProcessingOrder();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
+        }
+        public static List<OrderDTO> GetAllAssignedOrder()
+        {
+            var orders = DataAccessFactory.OrderDataExtended().GetAllAssignedOrder();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
+        }
+        public static List<OrderDTO> GetAllOnTheWayOrder()
+        {
+            var orders = DataAccessFactory.OrderDataExtended().GetAllOnTheWayOrder();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
+        }
         public static bool UpdateStatus(int orderId, int statusId)
-        {        
-            return DataAccessFactory.OrderDataExtended().UpdateOrderStatus(orderId, statusId);  
+        {
+            return DataAccessFactory.OrderDataExtended().UpdateOrderStatus(orderId, statusId);
         }
         public static bool AssignDeliveryMan(int orderId, int deliveryManId)
         {
-            var result =  DataAccessFactory.OrderDataExtended().AssignDeliveryMan(orderId, deliveryManId);
+            var result = DataAccessFactory.OrderDataExtended().AssignDeliveryMan(orderId, deliveryManId);
             if (result)
             {
                 return OrderStatusService.ChangeStatusToAssignedToDeliveryman(orderId);
@@ -93,16 +113,15 @@ namespace BLL.Services
 
         }
 
-        public static List<OrderDTO> GetAllPlacedOrder()
+        public static bool DeliveredOrder(int orderId)
         {
-            var orders = DataAccessFactory.OrderDataExtended().GetAllPlacedOrder();  
-            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);    
-        }
-
-        public static List<OrderDTO> GetAllProcessingOrder()
-        {
-            var orders = DataAccessFactory.OrderDataExtended().GetAllProcessingOrder();
-            return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
+            var result = PaymentService.UpdateAfterDelivery(orderId);
+            if (result)
+            {
+                return OrderStatusService.ChangeStatusToDelivered(orderId);
+                //return UpdateStatus(orderId, 5); // 5 = Delivered
+            }
+            return result;
         }
     }
 }
