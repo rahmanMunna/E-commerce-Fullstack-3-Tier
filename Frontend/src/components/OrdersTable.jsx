@@ -45,13 +45,21 @@ const OrdersTable = ({ order, handleBtn }) => {
             {/* View Btn */}
             {
                 order.OrderStatusID <= 2 &&
-                <td className="px-6 py-4 text-right">
-                    <Link to={`/viewPlaceOrderDetails/${order.Id}`}>
+                <td className="px-6 py-4 text-right ">
+                    <Link to={`/adminDashboard/viewPlaceOrderDetails/${order.Id}`}>
                         <button className="px-4 py-2 rounded-lg text-sm font-medium text-white 
                        bg-gradient-to-r from-indigo-600 to-indigo-800 
                        hover:from-blue-200 hover:to-yellow-600  hover:cursor-grab 
                        hover:shadow-lg transition">
                             View
+                        </button>
+                    </Link>
+                    <Link >
+                        <button className="px-4 py-2 rounded-lg text-sm font-medium text-white 
+                       bg-gradient-to-r from-red-600 to-red-800
+                       hover:from-blue-300 hover:to-red-900  hover:cursor-grab 
+                       hover:shadow-lg transition">
+                            Cancel
                         </button>
                     </Link>
                 </td>

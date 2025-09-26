@@ -16,7 +16,6 @@ namespace PresentationAPI.Controllers
         [HttpGet]
         [Route("all")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
-
         public HttpResponseMessage Get()
         {
             try
@@ -127,6 +126,26 @@ namespace PresentationAPI.Controllers
             }
 
         }
+
+
+        [HttpGet]
+        [Route("search/{text}")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage Serach(string text)
+        {
+            try
+            {
+                var result = ProductService.Search(text);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
+        }
+
+
 
 
     }

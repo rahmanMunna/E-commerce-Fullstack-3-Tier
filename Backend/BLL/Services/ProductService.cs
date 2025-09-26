@@ -17,17 +17,7 @@ namespace BLL.Services
             var products = DataAccessFactory.ProductData().Get();
             var productDTO = MapperHelper.GetMapper().Map<List<ProductDTO>>(products);
 
-            var productGroupByCategory = from p in productDTO
-                                         group p by p.Category.Name into g
-                                         select new ProductGroupByCategoryDTO
-                                         {
-                                             CategoryName = g.Key,
-                                             Products = g.ToList()
-                                         };
-
-            return productGroupByCategory.ToList();
-
-
+            return GetGroupByCategory(productDTO);
 
         }
         public static ProductDTO Get(int id) { 
@@ -35,7 +25,7 @@ namespace BLL.Services
             return MapperHelper.GetMapper().Map<ProductDTO>(product);   
         }
         public static List<ProductDTO> GetByCategory(int id) { 
-            var products = DataAccessFactory.ProductDataByCategory().GetByCategory(id); 
+            var products = DataAccessFactory.ProductDataExtented().GetByCategory(id); 
             return MapperHelper.GetMapper().Map<List<ProductDTO>>(products);    
         }
         public static ProductDTO Create(ProductDTO obj) { 
@@ -55,7 +45,29 @@ namespace BLL.Services
             var result = DataAccessFactory.ProductData().Delete(id);    
             return result;
         }
-        
+
+        //need to be updated
+        public static List<ProductGroupByCategoryDTO> Search(string text)
+        {
+            var results = DataAccessFactory.ProductDataExtented().Search(text);
+            var prductsDTO = MapperHelper.GetMapper().Map<List<ProductDTO>>(results);
+            return GetGroupByCategory(prductsDTO);  
+        }
+
+
+
+        public static List<ProductGroupByCategoryDTO> GetGroupByCategory(List<ProductDTO> productDTO)
+        {
+            var productGroupByCategory = from p in productDTO
+                                         group p by p.Category.Name into g
+                                         select new ProductGroupByCategoryDTO
+                                         {
+                                             CategoryName = g.Key,
+                                             Products = g.ToList()
+                                         };
+
+            return productGroupByCategory.ToList();
+        }
 
     }
 }

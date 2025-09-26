@@ -29,7 +29,7 @@ const PlaceOrderDetails = () => {
             .then(data => {
                 if (data) {
                     toast.success("✅ Order Confirmed and goes for Processing");
-                    navigate("/allPlacedOrders");
+                    // navigate("/");
 
                 }
             })
@@ -61,7 +61,7 @@ const PlaceOrderDetails = () => {
             .then(data => {
                 if (data) {
                     toast.success("Assigned to a Delivery man");
-                    navigate("/processingOrders")
+                    
                 }
                 else {
                     toast.error("Couldn't Assigned to a Delivery man");
@@ -78,7 +78,7 @@ const PlaceOrderDetails = () => {
                 setOrderDetail(data);
 
             })
-    }, [])
+    }, [orderDetail])
 
     return (
         <div>

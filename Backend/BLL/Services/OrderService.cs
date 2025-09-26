@@ -97,6 +97,15 @@ namespace BLL.Services
             var orders = DataAccessFactory.OrderDataExtended().GetAllOnTheWayOrder();
             return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
         }
+        public static List<OrderDTO> TrackOrders()
+        {
+            //assigned or on the way or delivered
+            var orders = Get(); 
+            var trackedOrders = orders.Where(o => o.OrderStatusID == 3
+                                            || o.OrderStatusID == 4
+                                            || o.OrderStatusID == 5).ToList();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(trackedOrders);
+        }
         public static bool UpdateStatus(int orderId, int statusId)
         {
             return DataAccessFactory.OrderDataExtended().UpdateOrderStatus(orderId, statusId);

@@ -52,7 +52,7 @@ const AssignedOrders = () => {
                 <tbody className="divide-y divide-gray-100 bg-white">
                     {
                         assignedOrders.map(assignedOrder =>
-                            <OrdersTable key={assignedOrder.Id} order={assignedOrder} handleAcceptBtn={handleAcceptBtn} ></OrdersTable>)
+                            <OrdersTable key={assignedOrder.Id} order={assignedOrder} handleBtn={handleAcceptBtn} ></OrdersTable>)
                     }
                 </tbody>
 

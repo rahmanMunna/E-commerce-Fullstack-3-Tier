@@ -70,8 +70,21 @@ const Cart = () => {
             .then(data => {
                 if (data) {
                     setCart([]); // clear cart after success
-                    toast.success("✅ Order placed successfully!");
-                    navigate("/productList");
+
+                    
+                    toast.success("Item added to cart!", {
+                        position: "top-right",
+                        theme: "colored", // "light" | "dark" | "colored"
+                        style: {
+                            background: "linear-gradient(to right, #4f46e5, #9333ea, #ec4899)",
+                            color: "#fff",
+                            fontWeight: "500",
+                            borderRadius: "12px",
+                            padding: "12px 16px",
+                        },
+                    });
+
+                    navigate("/customerDashboard");
 
                 }
             })
@@ -144,7 +157,7 @@ const Cart = () => {
                                             <input type="radio" name="radio-1" class="radio" checked="checked" /> Cash on Delivery
                                         </span>
                                     </div>
-                                    
+
                                     <div className="flex justify-between  ">
                                         <span>Amount</span>
                                         <span className='text-lg font-bold'>Tk {total.toFixed(2)}</span>

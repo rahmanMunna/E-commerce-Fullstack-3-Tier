@@ -7,45 +7,50 @@ import PlaceOrderDetails from "../pages/AllPlacedOrders/PlaceOrderDetails";
 import ProcessingOrders from "../pages/ProcessingOrders/ProcessingOrders";
 import AssignedOrders from "../pages/Deliveryman/AssignedOrders";
 import OnTheWayOrders from "../pages/Deliveryman/OnTheWayOrders";
+import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
+import TrackOrders from "../pages/Orders/TrackOrders";
+import CustomerDashboard from "../Dashboard/Customer/CustomerDashboard";
+import DeliverymanDashboard from "../Dashboard/Deliveryman/DeliverymanDashboard";
 
 const router = createBrowserRouter([
-
     {
         path: "/",
-        element: <Root></Root>,
+        element: <Root />,
+
+    },
+
+    // Admin Layout with nested routes
+    {
+        path: "/adminDashboard",
+        element: <AdminDashboard />,
         children: [
+            { index: true, element: <AllPlacedOrders /> },
+            { path: "processingOrders", element: <ProcessingOrders /> },
+            { path: "assignedOrders", element: <AssignedOrders /> },
+            { path: "trackOrders", element: <TrackOrders /> },
             {
-                path: "/productList",
-                element: <ProductList></ProductList>
-            },
-            {
-                path: "/cart",
-                element: <Cart></Cart>
-            },
-            {
-                path: "/allPlacedOrders",
-                element: <AllPlacedOrders></AllPlacedOrders>
-            },
-            {
-                path: "/viewPlaceOrderDetails/:Id",
+                path: "viewPlaceOrderDetails/:Id",
                 element: <PlaceOrderDetails></PlaceOrderDetails>
             },
-            {
-                path: "/processingOrders/",
-                element: <ProcessingOrders></ProcessingOrders>
-            },
-            {
-                path: "/assignedOrders/",
-                element: <AssignedOrders></AssignedOrders>
-            },
-            {
-                path: "/onTheWayOrders/",
-                element: <OnTheWayOrders></OnTheWayOrders>
-            },
-
-        ]
-    }
-
+            // you can add Delivered, Accounts etc.
+        ],
+    },
+    {
+        path: "/customerDashboard",
+        element: <CustomerDashboard />,
+        children: [
+            { index: true, element: <ProductList /> },
+            { path: "cart", element: <Cart /> },
+        ],
+    },
+    {
+        path: "/deliverymanDashboard",
+        element: <DeliverymanDashboard />,
+        children: [
+            { index: true, element: <AssignedOrders /> },
+            { path: "onTheWay", element: <OnTheWayOrders></OnTheWayOrders> }
+        ],
+    },
 ]);
 
 export default router;

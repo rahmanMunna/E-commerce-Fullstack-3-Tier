@@ -33,7 +33,6 @@ namespace PresentationAPI.Controllers
 
         [HttpGet]
         [Route("shippingAddress/{id}")]
-
         public HttpResponseMessage GetShippingAddress(int id)
         {
             try
@@ -49,7 +48,6 @@ namespace PresentationAPI.Controllers
 
         [HttpGet]
         [Route("all")]
-
         public HttpResponseMessage Get()
         {
             try
@@ -65,7 +63,6 @@ namespace PresentationAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-
         public HttpResponseMessage Get(int id)
         {
             try
@@ -145,6 +142,21 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("trackOrders")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage TrackOrders()
+        {
+            try
+            {
+                var result = OrderService.TrackOrders();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
 
         [HttpPut]

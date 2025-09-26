@@ -53,6 +53,12 @@ namespace DAL.Repos
             return false;   
 
         }
-        
+
+        public List<Product> Search(string text)
+        {
+            var products = db.Products.Where(p => p.Name.ToLower().Contains(text.ToLower())).ToList();
+            return products;
+        }
+
     }
 }

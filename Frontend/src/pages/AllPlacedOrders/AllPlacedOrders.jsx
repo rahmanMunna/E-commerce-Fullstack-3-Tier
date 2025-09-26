@@ -12,8 +12,8 @@ const AllPlacedOrders = () => {
     }, [])
 
     return (
-        <div className="container mx-auto">
-            <h1>Placed orders</h1>
+        <div className="w-11/12">
+            <h1 className="text-4xl mb-4 border-y-2 border-amber-800  p-2 text-center bg-violet-50">Placed orders</h1>
             <table className="min-w-full border border-gray-200 shadow-sm rounded-lg overflow-hidden">
                 <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm uppercase font-semibold">
                     <tr>

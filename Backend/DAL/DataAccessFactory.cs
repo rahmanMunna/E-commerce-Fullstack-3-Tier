@@ -15,7 +15,7 @@ namespace DAL
             return new ProductRepo();
         }
 
-        public static ICategoryRepo<Product, int> ProductDataByCategory()
+        public static ICategoryRepo<Product, int> ProductDataExtented()
         {
             return new ProductRepo();
         }

@@ -10,5 +10,6 @@ namespace DAL.Interfaces
     public interface ICategoryRepo<CLASS,ID>
     {
         List<CLASS> GetByCategory(ID id);
+        List<CLASS> Search(string text);
     }
 }
