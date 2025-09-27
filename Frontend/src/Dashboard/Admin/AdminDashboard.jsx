@@ -7,26 +7,28 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AdminDashboard = () => {
     return (
-        <div className="flex flex-col h-screen">
-            {/* Navbar (full width top) */}
-            <div className="w-full">
+        <div className="flex flex-col min-h-screen">
+            {/* Navbar (fixed at top) */}
+            <div className="fixed top-0 left-0 right-0 z-50">
                 <AdminNavbar />
             </div>
 
-            {/* Content below navbar */}
-            <div className="flex flex-1">
-                {/* Sidebar (left) */}
-                <div className="w-1/6">
+            {/* Page layout with sidebar + content */}
+            <div className="flex pt-16"> {/* pt-16 = height of navbar */}
+
+                {/* Sidebar (fixed left) */}
+                <div className="w-1/6 fixed top-16 left-0 bottom-0 bg-white shadow-md z-40">
                     <AdminSidebar />
                 </div>
 
-                {/* Main content area */}
-                <div className="flex-1 p-6 overflow-y-auto">
-                    {/* <AllPlacedOrders></AllPlacedOrders> */}
-                    <Outlet></Outlet>
+                {/* Main content (scrollable) */}
+                <div className="p-6  overflow-y-auto container mx-auto">
+                    <Outlet />
                 </div>
-                <ToastContainer position="top-right" autoClose={3000} />
             </div>
+
+            {/* Toast */}
+            <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );
 };

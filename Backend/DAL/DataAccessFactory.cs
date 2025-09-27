@@ -47,5 +47,10 @@ namespace DAL
         {
             return new PaymentRepo();
         }
+
+        public static IRepo<Category, bool, bool, int> CategoryData()
+        {
+            return new CategoryRepo();
+        }   
     }
 }

@@ -11,6 +11,8 @@ import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
 import TrackOrders from "../pages/Orders/TrackOrders";
 import CustomerDashboard from "../Dashboard/Customer/CustomerDashboard";
 import DeliverymanDashboard from "../Dashboard/Deliveryman/DeliverymanDashboard";
+import ManageProducts from "../pages/Products/Manage Products/ManageProducts";
+import AddProduct from "../components/AddProduct";
 
 const router = createBrowserRouter([
     {
@@ -25,9 +27,11 @@ const router = createBrowserRouter([
         element: <AdminDashboard />,
         children: [
             { index: true, element: <AllPlacedOrders /> },
+            { path: "manageProducts", element: <ManageProducts /> },
             { path: "processingOrders", element: <ProcessingOrders /> },
             { path: "assignedOrders", element: <AssignedOrders /> },
             { path: "trackOrders", element: <TrackOrders /> },
+            { path: "manageProducts/addProduct", element: <AddProduct /> },
             {
                 path: "viewPlaceOrderDetails/:Id",
                 element: <PlaceOrderDetails></PlaceOrderDetails>

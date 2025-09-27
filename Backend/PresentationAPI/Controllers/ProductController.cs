@@ -81,6 +81,7 @@ namespace PresentationAPI.Controllers
 
         [HttpPost]
         [Route("add")]
+        [EnableCors(origins: "*", headers: "*", methods: "POST")]
         public HttpResponseMessage Add(ProductDTO obj)
         {
             try
