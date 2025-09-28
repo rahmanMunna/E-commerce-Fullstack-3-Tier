@@ -19,6 +19,7 @@ namespace DAL.EF
         {
             this.Customers = new HashSet<Customer>();
             this.Deliverymen = new HashSet<Deliveryman>();
+            this.Tokens = new HashSet<Token>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,7 @@ namespace DAL.EF
         public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Deliveryman> Deliverymen { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Token> Tokens { get; set; }
     }
 }

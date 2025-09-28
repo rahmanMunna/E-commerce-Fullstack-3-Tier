@@ -1,8 +1,7 @@
-﻿using BLL.DTOs;
+﻿using BLL.Auth;
+using BLL.DTOs;
 using BLL.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -13,8 +12,10 @@ namespace PresentationAPI.Controllers
     [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
-        [HttpGet]
-        [Route("all")]
+
+        [Logged("Admin","Customer")]
+        [HttpGet]     
+        [Route("all")]  
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
         public HttpResponseMessage Get()
         {

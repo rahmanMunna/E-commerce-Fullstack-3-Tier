@@ -39,5 +39,6 @@ namespace DAL.EF
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Token> Tokens { get; set; }
     }
 }

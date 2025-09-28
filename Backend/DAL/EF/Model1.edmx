@@ -120,6 +120,16 @@
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Tokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tkey" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GeneratedAt" Type="datetime" Nullable="false" />
+          <Property Name="ExpiredAt" Type="datetime" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="TransactionTypes">
           <Key>
             <PropertyRef Name="Id" />
@@ -304,6 +314,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tokens_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Tokens">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EcommerceMSWebAPIModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
@@ -317,6 +339,7 @@
           <EntitySet Name="PaymentStatuses" EntityType="Self.PaymentStatuses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ShippingAddresses" EntityType="Self.ShippingAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TransactionTypes" EntityType="Self.TransactionTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Customers_ShippingAddresses" Association="Self.FK_Customers_ShippingAddresses">
@@ -374,6 +397,10 @@
           <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tokens_Users" Association="Self.FK_Tokens_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Tokens" EntitySet="Tokens" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -532,6 +559,11 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
+          <EntitySet Name="Tokens" EntityType="EcommerceMSWebAPIModel.Token" />
+          <AssociationSet Name="FK_Tokens_Users" Association="EcommerceMSWebAPIModel.FK_Tokens_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Token" EntitySet="Tokens" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="OrderTracker">
           <Key>
@@ -589,6 +621,7 @@
           <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Customers" Relationship="EcommerceMSWebAPIModel.FK_Customers_Users" FromRole="User" ToRole="Customer" />
           <NavigationProperty Name="Deliverymen" Relationship="EcommerceMSWebAPIModel.FK_Deliverymen_Users" FromRole="User" ToRole="Deliveryman" />
+          <NavigationProperty Name="Tokens" Relationship="EcommerceMSWebAPIModel.FK_Tokens_Users" FromRole="User" ToRole="Token" />
         </EntityType>
         <Association Name="FK_Customers_ShippingAddresses">
           <End Type="EcommerceMSWebAPIModel.ShippingAddress" Role="ShippingAddress" Multiplicity="1" />
@@ -779,6 +812,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tkey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GeneratedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiredAt" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="EcommerceMSWebAPIModel.FK_Tokens_Users" FromRole="Token" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Tokens_Users">
+          <End Type="EcommerceMSWebAPIModel.User" Role="User" Multiplicity="1" />
+          <End Type="EcommerceMSWebAPIModel.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -926,6 +982,17 @@
                 <ScalarProperty Name="ShippingCharge" ColumnName="ShippingCharge" />
                 <ScalarProperty Name="ProductTotal" ColumnName="ProductTotal" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokens">
+            <EntityTypeMapping TypeName="EcommerceMSWebAPIModel.Token">
+              <MappingFragment StoreEntitySet="Tokens">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+                <ScalarProperty Name="GeneratedAt" ColumnName="GeneratedAt" />
+                <ScalarProperty Name="Tkey" ColumnName="Tkey" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

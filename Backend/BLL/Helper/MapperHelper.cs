@@ -22,6 +22,8 @@ namespace BLL.Helper
                 cfg.CreateMap<Order, OrderDTO>().ReverseMap();
                 cfg.CreateMap<OrderStatus, OrderStatusDTO>().ReverseMap();
                 cfg.CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
+                cfg.CreateMap<User, UserDTO>().ReverseMap();
+                cfg.CreateMap<Token, TokenDTO>().ReverseMap();
                 
             });
             var mapper = new AutoMapper.Mapper(config);

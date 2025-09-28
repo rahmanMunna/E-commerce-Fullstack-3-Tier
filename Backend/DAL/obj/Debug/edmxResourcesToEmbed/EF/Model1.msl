@@ -146,5 +146,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Tokens">
+      <EntityTypeMapping TypeName="EcommerceMSWebAPIModel.Token">
+        <MappingFragment StoreEntitySet="Tokens">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+          <ScalarProperty Name="GeneratedAt" ColumnName="GeneratedAt" />
+          <ScalarProperty Name="Tkey" ColumnName="Tkey" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

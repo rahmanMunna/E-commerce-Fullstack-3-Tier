@@ -33,6 +33,8 @@
         <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses" />
         <AssociationConnector Association="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders" />
         <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Payments_Orders" />
+        <EntityTypeShape EntityType="EcommerceMSWebAPIModel.Token" Width="1.5" PointX="2.75" PointY="19.875" />
+        <AssociationConnector Association="EcommerceMSWebAPIModel.FK_Tokens_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
