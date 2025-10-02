@@ -1,6 +1,12 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 const DeliverymanSidebar = () => {
+
+
+    const { logout } = useContext(AuthContext);
+
     const linkCss = ({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg transition 
      ${isActive ? "bg-white/30 text-white font-semibold" : "bg-white/10 hover:bg-white/20"}`;
@@ -32,8 +38,8 @@ const DeliverymanSidebar = () => {
                 </NavLink>
 
 
-                
-                <button className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 transition">
+
+                <button onClick={logout} className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 transition">
                     🔒 Logout
                 </button>
             </div>

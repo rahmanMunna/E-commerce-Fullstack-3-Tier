@@ -31,6 +31,7 @@ namespace PresentationAPI.Controllers
 
         }
 
+        [Logged("Admin", "Customer")]
         [HttpGet]
         [Route("{id}")]
         public HttpResponseMessage Get(int id)
@@ -47,6 +48,7 @@ namespace PresentationAPI.Controllers
 
         }
 
+        [Logged("Admin", "Customer")]
         [HttpGet]
         [Route("category/{pId}")]
         public HttpResponseMessage GetProductCategory(int pId)
@@ -64,6 +66,7 @@ namespace PresentationAPI.Controllers
 
         }
 
+        [Logged("Admin", "Customer")]
         [HttpGet]
         [Route("byCategory/{cId}")]
         public HttpResponseMessage GetProductByCategory(int cId)
@@ -80,6 +83,7 @@ namespace PresentationAPI.Controllers
 
         }
 
+        [Logged("Admin")]
         [HttpPost]
         [Route("add")]
         [EnableCors(origins: "*", headers: "*", methods: "POST")]
@@ -97,6 +101,7 @@ namespace PresentationAPI.Controllers
 
         }
 
+        [Logged("Admin")]
         [HttpPut]
         [Route("update")]
         public HttpResponseMessage Update(ProductDTO obj)
@@ -113,6 +118,7 @@ namespace PresentationAPI.Controllers
 
         }
 
+        [Logged("Admin")]
         [HttpDelete]
         [Route("delete/{id}")]
         public HttpResponseMessage Delete(int id)
@@ -129,7 +135,7 @@ namespace PresentationAPI.Controllers
 
         }
 
-
+        [Logged("Admin", "Customer")]
         [HttpGet]
         [Route("search/{text}")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]

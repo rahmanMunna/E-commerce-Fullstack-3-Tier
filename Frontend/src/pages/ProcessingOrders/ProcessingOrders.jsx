@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import OrdersTable from "../../components/OrdersTable";
+import api from "../../Interceptor/Api";
 
 const ProcessingOrders = () => {
 
     const [ordersProcessing, setOrdersProcessing] = useState([])
 
     useEffect(() => {
-        fetch("https://localhost:44381/api/order/getProcessingOrder")
-            .then(res => res.json())
-            .then(data => setOrdersProcessing(data))
+        const url = "order/getProcessingOrder";
+        api.get(url)
+            .then(res => {
+                if (res.status !== 200) {
+                    alert("Unauthorized action");
+                    return
+                }
+                setOrdersProcessing(res.data)
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }, [])
 
     return (

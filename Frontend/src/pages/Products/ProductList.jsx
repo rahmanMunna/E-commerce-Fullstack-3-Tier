@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
 import CategorySection from "../../components/CategorySection"
+import api from "../../Interceptor/Api";
 
 
 const ProductList = () => {
 
     const [products, setProducts] = useState([]);
+    
+
+    function callAPI(url) {
+        api.get(url)
+            .then(res => {
+                res.status === 200 ? setProducts(res.data)
+                    : alert("Unauthorized action")
+            })
+            .catch(err => {
+                console.error(err.message);
+            })
+    }
 
     const loadData = () => {
-        fetch("https://localhost:44381/api/product/all")
-            .then(res => res.json())
-            .then(data => setProducts(data))
+        const url = "product/all";
+        callAPI(url);
     }
 
     const handleSearchProduct = (e) => {
         e.preventDefault();
         const text = e.target.searchText.value;
-        fetch(`https://localhost:44381/api/product/search/${text}`)
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data)
-            })
+        const url = `product/search/${text}`;
+        callAPI(url);
     }
-    
+
 
     useEffect(loadData, [])
 
@@ -31,9 +40,10 @@ const ProductList = () => {
 
             <div className="text-center">
                 <form onSubmit={handleSearchProduct} action="">
-                    <input type="search" name="searchText" placeholder="Search..." className="input input-neutral" />
-                    <input type="submit" className="btn btn-accent" value="Search" name="" id="" />
-                    <button onClick={loadData} className="btn btn-info ml-2">Refresh</button>
+                    <input type="search" name="searchText" placeholder="Search..." 
+                    className="input input-neutral relative  border-2" />
+                    <button onClick={loadData} className="btn btn-error ">X</button>
+                    <input type="submit" className="btn btn-accent" value="Search" name="" id="" />              
                 </form>
 
             </div>

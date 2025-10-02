@@ -21,6 +21,19 @@ namespace DAL
         {
             return new TokenRepo();
         }
+
+        public static IRepo<Customer, Customer, bool, int> CustomerData()
+        {
+            return new CustomerRepo();
+        }
+        public static ICustomerRepo CustomerDataExtented()
+        {
+            return new CustomerRepo();
+        }
+        public static IDeliverymanRepo DeliverymanDataExtented()
+        {
+            return new DeliverymanRepo();
+        }   
         public static IRepo<Product, Product, bool, int> ProductData() { 
             return new ProductRepo();
         }

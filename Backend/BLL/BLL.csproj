@@ -76,6 +76,7 @@
     <Compile Include="Auth\Logged.cs" />
     <Compile Include="DTOs\CategoryDTO.cs" />
     <Compile Include="DTOs\CustomerDTO.cs" />
+    <Compile Include="DTOs\DeliverymanDTO.cs" />
     <Compile Include="DTOs\OrderDetailDTO.cs" />
     <Compile Include="DTOs\OrderDTO.cs" />
     <Compile Include="DTOs\OrderStatusDTO.cs" />
@@ -92,6 +93,8 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthentiicationService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\DeliverymanService.cs" />
     <Compile Include="Services\OrderDetailService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\OrderStatusService.cs" />

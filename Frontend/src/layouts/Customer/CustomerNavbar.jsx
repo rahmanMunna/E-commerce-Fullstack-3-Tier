@@ -1,10 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import CartContext from "../../context/CartContext"
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const CustomerNavbar = () => {
     const { cart } = useContext(CartContext);
     const [total, setTotal] = useState(0);
+
+    const { user, logout } = useContext(AuthContext);
+    console.log(user)
 
     const linkClasses = ({ isActive }) =>
         `relative px-3 py-2 transition-all duration-300 font-medium ${isActive
@@ -16,6 +21,9 @@ const CustomerNavbar = () => {
         return price - price * (discount / 100);
     }
 
+    // toast.success(`Welcome ${user?.Name}`);
+    
+
     useEffect(() => {
         const newTotal = cart.reduce((sum, element) => {
             const finalPrice = calculatePriceAfterDiscount(
@@ -26,6 +34,7 @@ const CustomerNavbar = () => {
         }, 0);
         setTotal(newTotal);
     }, [cart]);
+    
 
     return (
         <div className="w-full bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-600 shadow-lg sticky top-0 z-50">
@@ -49,7 +58,7 @@ const CustomerNavbar = () => {
                 <div className="flex items-center gap-6">
                     {/* Cart */}
                     <div className="relative group">
-                        <Link to="/cart" className="flex items-center gap-2 hover:text-yellow-300 transition">
+                        <Link to="cart" className="flex items-center gap-2 hover:text-yellow-300 transition">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-6 w-6"
@@ -81,31 +90,20 @@ const CustomerNavbar = () => {
                     </div>
 
                     {/* Profile Dropdown */}
-                    <div className="relative group">
-                        <button className="flex items-center gap-2 hover:text-yellow-300 transition">
-                            <div className="w-9 h-9 rounded-full bg-yellow-300 text-black flex items-center justify-center font-bold">
-                                M
-                            </div>
-                            <span className="hidden sm:block">Mr. CustomerX</span>
-                            <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
+                    <div className="flex gap-3">
+                        <div className="flex items-center gap-2 hover:text-yellow-300  transition">
+                            <button className="btn  rounded-full bg-yellow-300
+                             text-black flex items-center justify-center font-bold
+                             hover:scale-105 transition 2s">
+                                {user?.Name[0]}
+                            </button>
+                            <span className="hidden sm:block">{user?.Name}</span>
+                        </div>
+                        <button onClick={logout} className="btn border-2 border-red-800 text-red-700 hover:scale-105 hover:btn-error hover:text-white transition 2s">
+                            Logout
                         </button>
 
-                        {/* Dropdown Menu */}
-                        <ul className="absolute right-0 mt-2 hidden group-hover:block bg-white text-gray-700 rounded-lg shadow-lg w-48 overflow-hidden">
-                            <li>
-                                <Link className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
-                            </li>
-                            <li>
-                                <Link className="block px-4 py-2 hover:bg-gray-100">Settings</Link>
-                            </li>
-                            <li>
-                                <button className="w-full text-left px-4 py-2 hover:bg-gray-100">
-                                    Logout
-                                </button>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
             </div>

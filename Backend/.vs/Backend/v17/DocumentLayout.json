@@ -3,44 +3,36 @@
   "WorkspaceRootPath": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\presentationapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\deliverymancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\deliverymancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\dal\\dataaccessfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\dtos\\deliverymandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\dtos\\deliverymandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\services\\deliverymanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\services\\deliverymanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\helper\\mapperhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\helper\\mapperhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\dal\\repos\\deliverymanrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\repos\\deliverymanrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\dal\\interfaces\\ideliverymanrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\interfaces\\ideliverymanrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\dal\\dataaccessfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\dataaccessfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\dal\\interfaces\\irepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\interfaces\\irepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\dtos\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\dtos\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\services\\authentiicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\services\\authentiicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\auth\\logged.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\auth\\logged.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\dal\\repos\\tokenrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\repos\\tokenrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\dal\\interfaces\\itoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\interfaces\\itoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\dal\\repos\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\repos\\userrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +42,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Logged.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Auth\\Logged.cs",
-              "RelativeDocumentMoniker": "BLL\\Auth\\Logged.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Auth\\Logged.cs",
-              "RelativeToolTip": "BLL\\Auth\\Logged.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAIwCsAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T10:44:56.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IToken.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Interfaces\\IToken.cs",
-              "RelativeDocumentMoniker": "DAL\\Interfaces\\IToken.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Interfaces\\IToken.cs",
-              "RelativeToolTip": "DAL\\Interfaces\\IToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T10:27:30.095Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TokenRepo.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Repos\\TokenRepo.cs",
-              "RelativeDocumentMoniker": "DAL\\Repos\\TokenRepo.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Repos\\TokenRepo.cs",
-              "RelativeToolTip": "DAL\\Repos\\TokenRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T08:28:22.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserRepo.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Repos\\UserRepo.cs",
-              "RelativeDocumentMoniker": "DAL\\Repos\\UserRepo.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Repos\\UserRepo.cs",
-              "RelativeToolTip": "DAL\\Repos\\UserRepo.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwA8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T08:16:05.229Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthentiicationService.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\AuthentiicationService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\AuthentiicationService.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\AuthentiicationService.cs",
-              "RelativeToolTip": "BLL\\Services\\AuthentiicationService.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAIwAwAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T08:08:09.575Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T07:59:49.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TokenDTO.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\DTOs\\TokenDTO.cs",
-              "RelativeDocumentMoniker": "BLL\\DTOs\\TokenDTO.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\DTOs\\TokenDTO.cs",
-              "RelativeToolTip": "BLL\\DTOs\\TokenDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Title": "MapperHelper.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Helper\\MapperHelper.cs",
+              "RelativeDocumentMoniker": "BLL\\Helper\\MapperHelper.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Helper\\MapperHelper.cs",
+              "RelativeToolTip": "BLL\\Helper\\MapperHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T07:55:16.26Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IRepo.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Interfaces\\IRepo.cs",
-              "RelativeDocumentMoniker": "DAL\\Interfaces\\IRepo.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Interfaces\\IRepo.cs",
-              "RelativeToolTip": "DAL\\Interfaces\\IRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T17:47:42.642Z",
+              "WhenOpened": "2025-10-02T18:35:23.332Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DeliverymanDTO.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\DTOs\\DeliverymanDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTOs\\DeliverymanDTO.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\DTOs\\DeliverymanDTO.cs",
+              "RelativeToolTip": "BLL\\DTOs\\DeliverymanDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T18:34:55.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DataAccessFactory.cs",
               "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\DataAccessFactory.cs",
               "RelativeDocumentMoniker": "DAL\\DataAccessFactory.cs",
               "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\DataAccessFactory.cs",
               "RelativeToolTip": "DAL\\DataAccessFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIAwwAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAD4vyIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T18:57:38.968Z",
+              "WhenOpened": "2025-10-02T18:32:45.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IDeliverymanRepo.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Interfaces\\IDeliverymanRepo.cs",
+              "RelativeDocumentMoniker": "DAL\\Interfaces\\IDeliverymanRepo.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Interfaces\\IDeliverymanRepo.cs",
+              "RelativeToolTip": "DAL\\Interfaces\\IDeliverymanRepo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T18:30:54.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeliverymanRepo.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Repos\\DeliverymanRepo.cs",
+              "RelativeDocumentMoniker": "DAL\\Repos\\DeliverymanRepo.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\Repos\\DeliverymanRepo.cs",
+              "RelativeToolTip": "DAL\\Repos\\DeliverymanRepo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T18:30:00.714Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeliverymanService.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\DeliverymanService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\DeliverymanService.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\DeliverymanService.cs",
+              "RelativeToolTip": "BLL\\Services\\DeliverymanService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T18:29:18.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\CustomerController.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "PresentationAPI\\Controllers\\CustomerController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwDoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T18:28:34.087Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\ProductController.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "PresentationAPI\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAMAAAANAAAAAAAAAA==",
+              "Title": "DeliverymanController.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\DeliverymanController.cs",
+              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\DeliverymanController.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\DeliverymanController.cs",
+              "RelativeToolTip": "PresentationAPI\\Controllers\\DeliverymanController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T18:45:47.993Z",
+              "WhenOpened": "2025-10-02T18:27:34.069Z",
               "EditorCaption": ""
             }
           ]

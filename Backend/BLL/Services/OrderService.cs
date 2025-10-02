@@ -92,6 +92,14 @@ namespace BLL.Services
             var orders = DataAccessFactory.OrderDataExtended().GetAllAssignedOrder();
             return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
         }
+        public static List<OrderDTO> GetAssignedOrder(int deliverymanId)
+        {
+            var allOrders = GetAllAssignedOrder();
+            var assignedOrders = allOrders.Where(o => o.DeliveryManId == deliverymanId).ToList(); // for a specific deliveryman
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(assignedOrders);    
+
+        }
+
         public static List<OrderDTO> GetAllOnTheWayOrder()
         {
             var orders = DataAccessFactory.OrderDataExtended().GetAllOnTheWayOrder();

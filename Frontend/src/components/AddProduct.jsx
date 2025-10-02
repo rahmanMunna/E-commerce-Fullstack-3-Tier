@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
+import api from '../Interceptor/Api';
 
 const AddProduct = () => {
 
@@ -11,11 +12,15 @@ const AddProduct = () => {
 
 
     const loadData = () => {
-        fetch("https://localhost:44381/api/category/all")
-            .then(res => res.json())
-            .then(data => {
-                setCategories(data)
-            })
+        const url = "category/all";
+        api.get(url)
+        .then(res =>{
+            if(res.status !== 200){
+                alert("Unauthorized Action");
+                return;
+            }
+            setCategories(res.data);
+        })
     }
     useEffect(loadData, []);
 
@@ -35,10 +40,6 @@ const AddProduct = () => {
         }
 
     }
-
-
-
-
 
 
     const CalculateCurrentPrice = () => {

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Steps from '../../components/Steps';
 import OrderCustomerInfo from '../../components/OrderDetail/OrderCustomerInfo';
 import Shipping_PaymentInfo from '../../components/OrderDetail/Shipping_PaymentInfo';
 import OrderItems from '../../components/OrderDetail/OrderItems';
+import api from '../../Interceptor/Api';
 
 
 
@@ -61,23 +62,27 @@ const PlaceOrderDetails = () => {
             .then(data => {
                 if (data) {
                     toast.success("Assigned to a Delivery man");
-                    
+
                 }
                 else {
                     toast.error("Couldn't Assigned to a Delivery man");
                 }
             })
 
-        
+
     }
 
     useEffect(() => {
-        fetch(`https://localhost:44381/api/orderdetail/order/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setOrderDetail(data);
-
+        const url = `orderdetail/order/${id}`;
+        api.get(url)
+            .then(res => {
+                res.status === 200 ? setOrderDetail(res.data)
+                    : alert("Unauthorized Action")
             })
+            .catch(err => {
+                console.error(err)
+            })
+
     }, [orderDetail])
 
     return (
@@ -111,15 +116,15 @@ const PlaceOrderDetails = () => {
                         </div>
                     </div>
                     {
-                        orderDetail[0]?.Order?.OrderStatusID <=2 &&
+                        orderDetail[0]?.Order?.OrderStatusID <= 2 &&
                         <form onSubmit={handleAssignBtn} action="" className='flex items-center justify-center gap-2 h-10 '>
-                        <select className='border p-2' name="deliveryman" id="">
-                            <option selected disabled value="">Select an delivery man</option>Select an delivery man
-                            <option value="1">Rahim</option>
-                        </select>
-                        <input type="submit" value={"Assign"} className='btn btn-primary' />
+                            <select className='border p-2' name="deliveryman" id="">
+                                <option selected disabled value="">Select an delivery man</option>Select an delivery man
+                                <option value="1">Rahim</option>
+                            </select>
+                            <input type="submit" value={"Assign"} className='btn btn-primary' />
 
-                    </form>
+                        </form>
                     }
                 </div>
             </div>

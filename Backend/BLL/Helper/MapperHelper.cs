@@ -18,6 +18,7 @@ namespace BLL.Helper
                 cfg.CreateMap<Product, ProductDTO>().ReverseMap();
                 cfg.CreateMap<Category, CategoryDTO>().ReverseMap();
                 cfg.CreateMap<Customer, CustomerDTO>().ReverseMap();
+                cfg.CreateMap<Deliveryman, DeliverymanDTO>().ReverseMap();
                 cfg.CreateMap<ShippingAddress, ShippingAddressDTO>().ReverseMap();
                 cfg.CreateMap<Order, OrderDTO>().ReverseMap();
                 cfg.CreateMap<OrderStatus, OrderStatusDTO>().ReverseMap();

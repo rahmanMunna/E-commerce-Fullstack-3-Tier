@@ -1,4 +1,5 @@
-﻿using BLL.Services;
+﻿using BLL.Auth;
+using BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace PresentationAPI.Controllers
     [RoutePrefix("api/orderdetail")]
     public class OrderDetailController : ApiController
     {
+        [Logged("Admin","Customer","Deliveryman")]
         [HttpGet]
         [Route("order/{oId}")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]

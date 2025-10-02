@@ -17,9 +17,10 @@ namespace BLL.Services
             var user = DataAccessFactory.UserData().Get(userId);
             if(user != null && user.Password == password)
             {
-                var token = GenerateToken(userId);
+                var token = GenerateToken(userId);  
+                token.User = DataAccessFactory.UserData().Get(userId);
                 return MapperHelper.GetMapper().Map<TokenDTO>(token);
-
+             
             }
             return null;
             

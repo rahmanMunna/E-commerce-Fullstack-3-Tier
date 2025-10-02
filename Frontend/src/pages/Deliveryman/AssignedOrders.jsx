@@ -1,19 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import OrdersTable from '../../components/OrdersTable';
 import { toast } from 'react-toastify';
+import api from '../../Interceptor/Api';
+import AuthContext from '../../context/AuthContext';
 
 
 const AssignedOrders = () => {
 
     const [assignedOrders, setAssignedOrders] = useState([]);
+    const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        fetch("https://localhost:44381/api/order/getAssignedOrder")
-            .then(res => res.json())
-            .then(data => {
-                setAssignedOrders(data);
+    useEffect(() => {      
+        if(user == null)
+            return;
+
+        const url = `order/getAssignedOrder/${user?.Id}`;
+        api.get(url)
+            .then(res => {
+                if (res.status !== 200) {
+                    alert("Unauthorize Action");
+                    return;
+                }
+                setAssignedOrders(res.data);
             })
-    }, [assignedOrders])
+            .catch(err => {
+                console.error(err)
+            })
+
+    }, [user])
 
     const handleAcceptBtn = (id) => {
         fetch(`https://localhost:44381/api/order/ontheway/${id}`, {
@@ -24,7 +38,7 @@ const AssignedOrders = () => {
                 if (data) {
                     const newAssignedOrders = assignedOrders.filter(order => order.Id !== id)
                     setAssignedOrders(newAssignedOrders);
-                    toast.success("Accept the Order, OrderId : "+id);
+                    toast.success("Accept the Order, OrderId : " + id);
                 }
                 else {
                     console.log("server issue")

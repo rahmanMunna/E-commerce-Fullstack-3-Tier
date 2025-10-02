@@ -13,6 +13,9 @@ import CustomerDashboard from "../Dashboard/Customer/CustomerDashboard";
 import DeliverymanDashboard from "../Dashboard/Deliveryman/DeliverymanDashboard";
 import ManageProducts from "../pages/Products/Manage Products/ManageProducts";
 import AddProduct from "../components/AddProduct";
+import Login from "../pages/Authentication/Login";
+import UnAuthorized from "../pages/Authentication/UnAuthorized";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -20,40 +23,60 @@ const router = createBrowserRouter([
         element: <Root />,
 
     },
+    {
+        path: "/login",
+        element: <Login />,
+    },
+    {
+        path: "/unauthorized",
+        element: <UnAuthorized />,
+    },
 
     // Admin Layout with nested routes
     {
-        path: "/adminDashboard",
-        element: <AdminDashboard />,
+        element: <PrivateRoute allowedRoles={["Admin"]} />,
         children: [
-            { index: true, element: <AllPlacedOrders /> },
-            { path: "manageProducts", element: <ManageProducts /> },
-            { path: "processingOrders", element: <ProcessingOrders /> },
-            { path: "assignedOrders", element: <AssignedOrders /> },
-            { path: "trackOrders", element: <TrackOrders /> },
-            { path: "manageProducts/addProduct", element: <AddProduct /> },
             {
-                path: "viewPlaceOrderDetails/:Id",
-                element: <PlaceOrderDetails></PlaceOrderDetails>
-            },
-            // you can add Delivered, Accounts etc.
-        ],
+                path: "/adminDashboard",
+                element: <AdminDashboard />,
+                children: [
+                    { index: true, element: <AllPlacedOrders /> },
+                    { path: "manageProducts", element: <ManageProducts /> },
+                    { path: "processingOrders", element: <ProcessingOrders /> },
+                    { path: "assignedOrders", element: <AssignedOrders /> },
+                    { path: "trackOrders", element: <TrackOrders /> },
+                    { path: "manageProducts/addProduct", element: <AddProduct /> },
+                    { path: "viewPlaceOrderDetails/:Id", element: <PlaceOrderDetails /> },
+                ],
+            }
+        ]
+
     },
     {
-        path: "/customerDashboard",
-        element: <CustomerDashboard />,
+        element: <PrivateRoute allowedRoles={["Customer"]} />,
         children: [
-            { index: true, element: <ProductList /> },
-            { path: "cart", element: <Cart /> },
-        ],
+            {
+                path: "/customerDashboard",
+                element: <CustomerDashboard />,
+                children: [
+                    { index: true, element: <ProductList /> },
+                    { path: "cart", element: <Cart /> },
+                ],
+            }
+        ]
     },
     {
-        path: "/deliverymanDashboard",
-        element: <DeliverymanDashboard />,
+        element: <PrivateRoute allowedRoles={["Deliveryman"]} />,
         children: [
-            { index: true, element: <AssignedOrders /> },
-            { path: "onTheWay", element: <OnTheWayOrders></OnTheWayOrders> }
-        ],
+            {
+                path: "/deliverymanDashboard",
+                element: <DeliverymanDashboard />,
+                children: [
+                    { index: true, element: <AssignedOrders /> },
+                    { path: "onTheWay", element: <OnTheWayOrders></OnTheWayOrders> }
+                ],
+            }
+        ]
     },
 ]);
 

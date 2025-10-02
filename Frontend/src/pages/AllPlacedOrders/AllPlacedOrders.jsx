@@ -1,15 +1,36 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import OrdersTable from "../../components/OrdersTable";
+import api from "../../Interceptor/Api";
+import AuthContext from "../../context/AuthContext";
 
 const AllPlacedOrders = () => {
 
     const [placedOrders, setPlacedOrders] = useState([]);
 
+    const { user } = useContext(AuthContext);
+    console.log(user)
+
     useEffect(() => {
-        fetch("https://localhost:44381/api/order/getPlacedOrder")
-            .then(res => res.json())
-            .then(data => setPlacedOrders(data))
-    }, [])
+        const route = "order/getPlacedOrder";
+        api.get(route)
+            .then(res => {
+                if (res.status !== 200) {
+                    console.log(res.status)
+                    return;
+                }
+                setPlacedOrders(res.data);
+            })
+            .catch(err => {
+                if (err.status === 403) {
+                    console.log("You don't have any access to this api")
+                }
+                else if (err.status === 401) {
+                    console.log("PLease provide an Token")
+                }
+            })
+    }, []);
+
+
 
     return (
         <div className="">
@@ -26,7 +47,12 @@ const AllPlacedOrders = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-100 bg-white">
                     {
-                        placedOrders.map(placedOrder => <OrdersTable order={placedOrder} ></OrdersTable>)
+                        placedOrders.length > 0 &&
+                        placedOrders.map((placedOrder, idx) => {
+                            return (
+                                <OrdersTable key={idx} order={placedOrder} ></OrdersTable>
+                            )
+                        })
                     }
                 </tbody>
 

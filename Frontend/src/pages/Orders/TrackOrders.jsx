@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../../Interceptor/Api";
 
 
 const TrackOrders = () => {
@@ -6,9 +7,18 @@ const TrackOrders = () => {
     const [trackOrders, setTrackOrder] = useState([]);
 
     const loadAllData = () => {
-        fetch("https://localhost:44381/api/order/trackOrders")
-            .then(res => res.json())
-            .then(data => setTrackOrder(data))
+        const url = "order/trackOrders";
+        api.get(url)
+            .then(res => {
+                if (res.status !== 200) {
+                    alert("Unauthorized action");
+                    return
+                }
+                setTrackOrder(res.data)
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
 
     useEffect(loadAllData, [])
@@ -16,7 +26,8 @@ const TrackOrders = () => {
     return (
         <div>
             {
-                trackOrders.length
+                trackOrders.length > 0 &&
+                <h1>{trackOrders.length}</h1>
             }
         </div>
     );

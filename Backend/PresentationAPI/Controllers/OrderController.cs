@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using BLL.Auth;
+using BLL.DTOs;
 using BLL.Models;
 using BLL.Services;
 using System;
@@ -15,6 +16,7 @@ namespace PresentationAPI.Controllers
     [RoutePrefix("api/order")]
     public class OrderController : ApiController
     {
+        [Logged("Customer")]
         [HttpPost]
         [Route("place")]
         [EnableCors(origins: "*", headers: "*", methods: "POST")]
@@ -31,13 +33,14 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin", "Customer")]
         [HttpGet]
-        [Route("shippingAddress/{id}")]
-        public HttpResponseMessage GetShippingAddress(int id)
+        [Route("shippingAddress/{oId}")]
+        public HttpResponseMessage GetShippingAddress(int oId)
         {
             try
             {
-                var result = OrderService.GetShippingAddress(id);   
+                var result = OrderService.GetShippingAddress(oId);   
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
@@ -46,6 +49,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin")]
         [HttpGet]
         [Route("all")]
         public HttpResponseMessage Get()
@@ -61,6 +65,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin")]
         [HttpGet]
         [Route("{id}")]
         public HttpResponseMessage Get(int id)
@@ -76,7 +81,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
-
+        [Logged("Admin")]
         [HttpGet]
         [Route("getPlacedOrder")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -93,7 +98,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
-
+        [Logged("Admin")]
         [HttpGet]
         [Route("getProcessingOrder")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -110,6 +115,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin")]
         [HttpGet]
         [Route("getAssignedOrder")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -126,6 +132,24 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Deliveryman")]
+        [HttpGet]
+        [Route("getAssignedOrder/{deliverymanId}")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage GetAssignedOrder(int deliverymanId)
+        {
+            try
+            {
+                var result = OrderService.GetAssignedOrder(deliverymanId);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [Logged("Admin")]
         [HttpGet]
         [Route("getOnTheWayOrder")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -142,6 +166,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin")]
         [HttpGet]
         [Route("trackOrders")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -158,7 +183,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
-
+        [Logged("Admin")]
         [HttpPut]
         [Route("processing/{id}")]
         [EnableCors(origins: "*", headers: "*", methods: "PUT")]
@@ -175,6 +200,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin")]
         [HttpPut]
         [Route("assign")]
         [EnableCors(origins: "*", headers: "*", methods: "PUT")]
@@ -191,6 +217,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin")]
         [HttpPut]
         [Route("ontheway/{oId}")]
         [EnableCors(origins: "*", headers: "*", methods: "PUT")]
@@ -208,7 +235,7 @@ namespace PresentationAPI.Controllers
         }
 
 
-
+        [Logged("Admin")]
         [HttpPut]
         [Route("delivered/{oId}")]
         [EnableCors(origins: "*", headers: "*", methods: "PUT")]

@@ -2,14 +2,13 @@ import React, { useContext, useState } from 'react';
 import CartContext from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
+import AuthContext from '../../context/AuthContext';
 
 const Cart = () => {
     const { cart, setCart } = useContext(CartContext);
     const [step, setStep] = useState(false);
-    const [customer, setCustomer] = useState({
-        Name: "Md X",
-        ShippingAdd: "Sector-3,Uttara"
-    });
+    const {user} = useContext(AuthContext);
+    
     const navigate = useNavigate();
 
     const handleRemove = (pId) => {
@@ -71,7 +70,6 @@ const Cart = () => {
                 if (data) {
                     setCart([]); // clear cart after success
 
-                    
                     toast.success("Item added to cart!", {
                         position: "top-right",
                         theme: "colored", // "light" | "dark" | "colored"
@@ -84,7 +82,7 @@ const Cart = () => {
                         },
                     });
 
-                    navigate("/customerDashboard");
+                    navigate("customerDashboard");
 
                 }
             })
@@ -124,11 +122,11 @@ const Cart = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                                     <div>
                                         <p className="font-medium">Name:</p>
-                                        <p>{customer.Name}</p>
+                                        <p>{user?.Name}</p>
                                     </div>
                                     <div>
                                         <p className="font-medium">Shipping Address:</p>
-                                        <p>{customer.ShippingAdd}</p>
+                                        <p>{user?.ShippingAddress?.City},{user?.ShippingAddress?.Location}</p>
                                     </div>
                                 </div>
                                 {/* Order summary */}
@@ -154,7 +152,7 @@ const Cart = () => {
                                     <div className="flex justify-between">
                                         <span>Method</span>
                                         <span>
-                                            <input type="radio" name="radio-1" class="radio" checked="checked" /> Cash on Delivery
+                                            <input type="radio" name="radio-1" className="radio" checked="checked" /> Cash on Delivery
                                         </span>
                                     </div>
 

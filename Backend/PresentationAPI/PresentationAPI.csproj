@@ -119,6 +119,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DeliverymanController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
