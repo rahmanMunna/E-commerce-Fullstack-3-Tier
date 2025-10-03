@@ -4,8 +4,7 @@ import AuthContext from "../../context/AuthContext";
 
 const DeliverymanSidebar = () => {
 
-
-    const { logout } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     const linkCss = ({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg transition 
@@ -15,8 +14,8 @@ const DeliverymanSidebar = () => {
             {/* Header */}
             <div className="p-6 border-b border-white/20">
                 <h1 className="text-2xl font-bold">Delivery man Panel</h1>
-                <p className="mt-1 text-sm text-gray-200">Welcome, Munna</p>
-                <small className="text-gray-300">ID: #12345</small>
+                <p className="mt-1 text-2xl text-gray-200">Welcome, <span className="text-3xl text-green-500">{user?.Name}</span></p>
+                <p className="text-gray-300 text-xl">ID: <span className="text-2xl text-green-500">#{user?.Id}</span></p>
             </div>
 
             {/* Navigation */}
@@ -37,6 +36,13 @@ const DeliverymanSidebar = () => {
                     On The Way
                 </NavLink>
 
+                <NavLink
+                    to="/"
+                    end
+                    className={linkCss}
+                >
+                    Order Completed
+                </NavLink>
 
 
                 <button onClick={logout} className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 transition">

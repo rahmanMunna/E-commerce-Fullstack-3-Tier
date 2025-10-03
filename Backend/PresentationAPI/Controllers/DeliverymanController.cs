@@ -1,4 +1,5 @@
-﻿using BLL.Services;
+﻿using BLL.Auth;
+using BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace PresentationAPI.Controllers
     [RoutePrefix("api/deliveryman")]
     public class DeliverymanController : ApiController
     {
+        [Logged("Admin","Deliveryman")]
         [HttpGet]
         [Route("all")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
         public HttpResponseMessage Get()
         {
             try

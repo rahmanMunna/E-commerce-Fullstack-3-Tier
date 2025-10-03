@@ -8,10 +8,11 @@ import AuthContext from '../../context/AuthContext';
 const AssignedOrders = () => {
 
     const [assignedOrders, setAssignedOrders] = useState([]);
+    const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
 
-    useEffect(() => {      
-        if(user == null)
+    useEffect(() => {
+        if (user == null)
             return;
 
         const url = `order/getAssignedOrder/${user?.Id}`;
@@ -22,6 +23,7 @@ const AssignedOrders = () => {
                     return;
                 }
                 setAssignedOrders(res.data);
+                setLoading(false)
             })
             .catch(err => {
                 console.error(err)
@@ -29,48 +31,54 @@ const AssignedOrders = () => {
 
     }, [user])
 
-    const handleAcceptBtn = (id) => {
-        fetch(`https://localhost:44381/api/order/ontheway/${id}`, {
-            method: "PUT",
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    const newAssignedOrders = assignedOrders.filter(order => order.Id !== id)
-                    setAssignedOrders(newAssignedOrders);
-                    toast.success("Accept the Order, OrderId : " + id);
-                }
-                else {
-                    console.log("server issue")
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
+    const handleAcceptBtn = async (id) => {
+
+        try {
+            const response = await api.put(`order/ontheway/${id}`)
+            if (response.data) {
+                const newAssignedOrders = assignedOrders.filter(order => order.Id !== id)
+                setAssignedOrders(newAssignedOrders);
+                toast.success("Accept  OrderId : " + id);
+                return;
+            }
+            toast.success("Order Cant Accept");
+        }
+        catch (err) {
+            console.log(err.message)
+        }
+
+
     }
 
     return (
         <div className="container mx-auto">
-            <h1>Assigned orders</h1>
-            <table className="border border-gray-200 shadow-sm rounded-lg overflow-hidden">
-                <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm uppercase font-semibold">
-                    <tr>
-                        <th className="px-6 py-3 text-left">Order ID</th>
-                        <th className="px-6 py-3 text-left">Order Date</th>
-                        <th className="px-6 py-3 text-left">Customer</th>
-                        <th className="px-6 py-3 text-left">Status</th>
-                        <th className="px-6 py-3 text-left">Shipping Address</th>
-                        <th className="px-6 py-3 text-right">Actions</th>
-                    </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 bg-white">
-                    {
-                        assignedOrders.map(assignedOrder =>
-                            <OrdersTable key={assignedOrder.Id} order={assignedOrder} handleBtn={handleAcceptBtn} ></OrdersTable>)
-                    }
-                </tbody>
+            {
+                loading ?
+                    <h1>Loading</h1>
+                    :
+                    <div>
+                        <h1>Assigned orders  : {assignedOrders.length}</h1>
+                        <table className="border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+                            <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm uppercase font-semibold">
+                                <tr>
+                                    <th className="px-6 py-3 text-left">Order ID</th>
+                                    <th className="px-6 py-3 text-left">Order Date</th>
+                                    <th className="px-6 py-3 text-left">Customer</th>
+                                    <th className="px-6 py-3 text-left">Status</th>
+                                    <th className="px-6 py-3 text-left">Shipping Address</th>
+                                    <th className="px-6 py-3 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-100 bg-white">
+                                {
+                                    assignedOrders.map(assignedOrder =>
+                                        <OrdersTable key={assignedOrder.Id} order={assignedOrder} handleBtn={handleAcceptBtn} ></OrdersTable>)
+                                }
+                            </tbody>
 
-            </table>
+                        </table>
+                    </div>
+            }
 
         </div>
     );

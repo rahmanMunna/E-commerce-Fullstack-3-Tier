@@ -149,7 +149,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
-        [Logged("Admin")]
+        [Logged("Admin","Deliveryman")]
         [HttpGet]
         [Route("getOnTheWayOrder")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -217,7 +217,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
-        [Logged("Admin")]
+        [Logged("Deliveryman")]
         [HttpPut]
         [Route("ontheway/{oId}")]
         [EnableCors(origins: "*", headers: "*", methods: "PUT")]
@@ -235,7 +235,7 @@ namespace PresentationAPI.Controllers
         }
 
 
-        [Logged("Admin")]
+        [Logged("Admin","Deliveryman")]
         [HttpPut]
         [Route("delivered/{oId}")]
         [EnableCors(origins: "*", headers: "*", methods: "PUT")]

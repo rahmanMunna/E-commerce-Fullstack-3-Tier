@@ -23,20 +23,4 @@ api.interceptors.request.use(
     error => Promise.reject(error)
 );
 
-
-// api.interceptors.response.use(
-//     response => {
-//         console.log(response.data)
-//         return response;
-//     },
-//     // error => {
-//     //     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-//     //         console.log(error.status)
-//     //         console.log(error.response.data)
-//     //         window.location.href = "/login";
-//     //     }
-//     //     return Promise.reject(error);
-//     // }
-// );
-
 export default api;

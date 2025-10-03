@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategorySection from "../../components/CategorySection"
 import api from "../../Interceptor/Api";
+import CartContext from "../../context/CartContext";
 
 
 const ProductList = () => {
 
     const [products, setProducts] = useState([]);
     
+
 
     function callAPI(url) {
         api.get(url)
@@ -40,16 +42,19 @@ const ProductList = () => {
 
             <div className="text-center">
                 <form onSubmit={handleSearchProduct} action="">
-                    <input type="search" name="searchText" placeholder="Search..." 
-                    className="input input-neutral relative  border-2" />
+                    <input type="search" name="searchText" placeholder="Search..."
+                        className="input input-neutral relative  border-2" />
                     <button onClick={loadData} className="btn btn-error ">X</button>
-                    <input type="submit" className="btn btn-accent" value="Search" name="" id="" />              
+                    <input type="submit" className="btn btn-accent" value="Search" name="" id="" />
                 </form>
+                
 
             </div>
-            {products.map((category) => (
-                <CategorySection key={category.CategoryName} category={category} />
-            ))}
+            {
+                products.map((category) => (
+                    <CategorySection key={category.CategoryName} category={category} />
+                ))
+            }
         </div>
 
     );

@@ -5,6 +5,7 @@ import api from "../../Interceptor/Api";
 const ProcessingOrders = () => {
 
     const [ordersProcessing, setOrdersProcessing] = useState([])
+    // console.log(ordersProcessing)
 
     useEffect(() => {
         const url = "order/getProcessingOrder";

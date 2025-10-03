@@ -13,7 +13,8 @@ namespace BLL.Services
     {
         public static List<DeliverymanDTO> Get()
         {
-            return null;
+            var deliverymen = DataAccessFactory.DeliverymanData().Get();    
+            return MapperHelper.GetMapper().Map <List<DeliverymanDTO>>(deliverymen);
         }
 
         public static DeliverymanDTO Get(int id)

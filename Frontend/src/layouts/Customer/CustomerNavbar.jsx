@@ -79,9 +79,9 @@ const CustomerNavbar = () => {
                         {/* Dropdown Preview */}
                         <div className="absolute right-0 mt-2 hidden group-hover:block bg-white text-gray-800 rounded-lg shadow-lg w-64 p-4">
                             <h3 className="font-semibold">{cart.length} Items</h3>
-                            <p className="text-sm text-gray-500">Subtotal: ${total}</p>
+                            <p className="text-sm text-red-500">Subtotal: TK {total}</p>
                             <Link
-                                to="/cart"
+                                to="cart"
                                 className="block mt-3 w-full bg-indigo-600 text-white text-center rounded-lg py-2 hover:bg-indigo-700 transition"
                             >
                                 View Cart
@@ -89,7 +89,7 @@ const CustomerNavbar = () => {
                         </div>
                     </div>
 
-                    {/* Profile Dropdown */}
+                    {/* Profile & logout */}
                     <div className="flex gap-3">
                         <div className="flex items-center gap-2 hover:text-yellow-300  transition">
                             <button className="btn  rounded-full bg-yellow-300

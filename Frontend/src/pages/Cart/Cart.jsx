@@ -3,12 +3,13 @@ import CartContext from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import AuthContext from '../../context/AuthContext';
+import api from '../../Interceptor/Api';
 
 const Cart = () => {
     const { cart, setCart } = useContext(CartContext);
     const [step, setStep] = useState(false);
-    const {user} = useContext(AuthContext);
-    
+    const { user } = useContext(AuthContext);
+
     const navigate = useNavigate();
 
     const handleRemove = (pId) => {
@@ -52,44 +53,27 @@ const Cart = () => {
                 }
             )
         }
-
-        fetch("https://localhost:44381/api/order/place", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(cartItem)
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error("Failed to place order");
-                }
-                return res.json();
-            })
-            .then(data => {
-                if (data) {
-                    setCart([]); // clear cart after success
-
-                    toast.success("Item added to cart!", {
-                        position: "top-right",
-                        theme: "colored", // "light" | "dark" | "colored"
-                        style: {
-                            background: "linear-gradient(to right, #4f46e5, #9333ea, #ec4899)",
-                            color: "#fff",
-                            fontWeight: "500",
-                            borderRadius: "12px",
-                            padding: "12px 16px",
-                        },
-                    });
-
-                    navigate("customerDashboard");
-
-                }
-            })
-            .catch(err => console.error("Error:", err));
+        // console.log(cartItem)
+        sendToServer(cartItem)
 
 
-        setStep(true);
+    }
+
+    async function sendToServer(cartItem) {
+        try {
+            const response = await api.post("order/place", cartItem);
+            console.log(response);
+            if (response.data) {
+                setStep(true)
+                setCart([]);
+                toast.success("Order placed")
+                navigate("/customerDashboard")
+            }
+        }
+        catch (error) {
+            console.error("Error while adding order:", error.response?.data || error.message);
+        }
+
     }
 
     const subtotal = cart.reduce((sum, c) => {
@@ -220,7 +204,9 @@ const Cart = () => {
                                         );
                                     })}
                                     <div className='flex justify-end'>
-                                        <button onClick={handlePlaceOrder} className='btn btn-error'>Place Order</button>
+                                        <button
+                                            onClick={handlePlaceOrder}
+                                            className='btn btn-error hover:scale-105 hover:border-amber-300 transition 2s'>Place Order</button>
                                     </div>
                                 </div>
                             </div>

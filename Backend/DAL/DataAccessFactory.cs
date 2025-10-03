@@ -30,6 +30,10 @@ namespace DAL
         {
             return new CustomerRepo();
         }
+        public static IRepo<Deliveryman, Deliveryman, int, bool> DeliverymanData()
+        {
+            return new DeliverymanRepo();
+        }
         public static IDeliverymanRepo DeliverymanDataExtented()
         {
             return new DeliverymanRepo();

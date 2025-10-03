@@ -1,4 +1,5 @@
 const Steps = ({ statusId }) => {
+    // console.log(statusId)
     return (
         <div className="md:w-1/4 mb-6 md:mb-0">
             <ul className="steps steps-vertical">

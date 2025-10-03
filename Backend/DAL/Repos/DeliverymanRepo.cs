@@ -17,7 +17,7 @@ namespace DAL.Repos
         }   
         public List<Deliveryman> Get()
         {
-            throw new NotImplementedException();
+            return db.Deliverymen.ToList();
         }
 
         public Deliveryman Get(bool id)
