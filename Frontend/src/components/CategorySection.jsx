@@ -1,19 +1,15 @@
-
-// import { useContext } from "react";
 import ProductCard from "./ProductCard";
-import CartContext from "../context/CartContext";
-// import CartModal from "./CartModal";
 
 const CategorySection = ({ category }) => {
 
-    // const { showModal } = useContext(CartContext);
+
 
     return (
         <div className="container mx-auto my-12 px-4">
             {/* Category Header */}
             <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-blue-100 via-white to-blue-50 shadow-lg text-center border border-blue-200">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-2">
-                    {category.CategoryName}
+                    {category.CategoryName} <small className="text-black">({category.Products.length}) Items</small>
                 </h2>
                 <p className="text-gray-700 text-sm sm:text-base">
                     Explore our wide range of <span className="font-semibold text-blue-600">{category.CategoryName.toLowerCase()}</span> products

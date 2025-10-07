@@ -1,17 +1,15 @@
-import { useContext } from "react";
-import CartContext from "../context/CartContext"
+import CartModal from "./Modal/CartModal";
 
 
-const ProductCard = ({ product }) => {
-
-    const { addToCart } = useContext(CartContext);
-
+const ProductCard = ({ product }) => {  
+    const modalId = `modal-${product.Id}`
+    
     const discountedPrice = product.Price - product.Price * (product.Discount / 100);
 
     return (
 
         <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
-
+            <CartModal product={product} modalId={modalId} />
             {/* Product Details */}
             <div className="p-4 flex flex-col flex-1">
                 <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
@@ -35,8 +33,8 @@ const ProductCard = ({ product }) => {
                     {product.StockQty > 0 ? `${product.StockQty} in stock` : "Out of stock"}
                 </p>
 
-                {/* Add to Cart Button */}
-                <button onClick={() => addToCart(product)}
+               
+                <button onClick={() => document.getElementById(`modal-${product.Id}`).showModal()}
                     className={`mt-auto w-full py-2 px-4 rounded-lg font-semibold text-white transition-all duration-300
                     ${product.StockQty > 0
                             ? "bg-gradient-to-r from-amber-800 to-indigo-500 hover:cursor-grab hover:from-blue-600 hover:to-blue-700 shadow-md hover:shadow-lg transform hover:scale-105"

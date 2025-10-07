@@ -16,6 +16,9 @@ import AddProduct from "../components/AddProduct";
 import Login from "../pages/Authentication/Login";
 import UnAuthorized from "../pages/Authentication/UnAuthorized";
 import PrivateRoute from "./PrivateRoute";
+import CustomerTrackOrders from "../pages/Customer/CustomerTrackOrders";
+import MyOrders from "../pages/Customer/MyOrders";
+import CancelledOrders from "../pages/Customer/CancelledOrders";
 
 const router = createBrowserRouter([
     {
@@ -60,6 +63,9 @@ const router = createBrowserRouter([
                 element: <CustomerDashboard />,
                 children: [
                     { index: true, element: <ProductList /> },
+                    { path: "trackOrders", element: <CustomerTrackOrders /> },
+                    { path: "myOrders", element: <MyOrders /> },
+                    { path: "cancelled", element: <CancelledOrders /> },
                     { path: "cart", element: <Cart /> },
                 ],
             }

@@ -7,11 +7,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 const CustomerDashboard = () => {
 
-   
+
     return (
         <div>
             <CustomerNavbar></CustomerNavbar>
-            <Outlet></Outlet>
+            <div className="container mx-auto">
+                <Outlet></Outlet>
+            </div>
             <ToastContainer position="top-right" autoClose={3000} />
 
         </div>

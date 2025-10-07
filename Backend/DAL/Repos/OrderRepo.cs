@@ -33,7 +33,21 @@ namespace DAL.Repos
         }
         public bool Update(Order obj)
         {
-            return true;   
+            var existingObj = this.Get(obj.Id); 
+            
+            if (existingObj != null)
+            {
+                obj.Date = existingObj.Date;
+                obj.ProductTotal = existingObj.ProductTotal;
+                obj.ShippingCharge = existingObj.ShippingCharge;
+                obj.Total = existingObj.Total;
+                obj.CustomerId = existingObj.CustomerId;
+                obj.DeliveryManId = existingObj.DeliveryManId;
+
+                db.Entry(existingObj).CurrentValues.SetValues(obj);
+                return db.SaveChanges() > 0;
+            }   
+            return false;
         }
         public bool Delete(int id)
         {
@@ -51,6 +65,14 @@ namespace DAL.Repos
             return order;   
 
         }
+        
+        public List<Order> GetByCustomerId(int cId)
+        {
+            var order = (from o in db.Orders
+                         where o.CustomerId == cId
+                         select o).ToList();
+            return order;
+        }   
 
         public List<Order> GetAllPlacedOrder()
         {
@@ -115,8 +137,19 @@ namespace DAL.Repos
             }
             return false;   
         }
-        
 
+        public bool AdjustQuantityAfterConfirm(List<OrderDetail> orderDetails)
+        {
+            foreach (var od in orderDetails)
+            {
+                var product = db.Products.FirstOrDefault(p => p.Id == od.Product.Id);
+                if (product != null)
+                {
+                    product.StockQty -= od.Qty;
+                }
+            }
+            return db.SaveChanges() > 0;    
+        }
 
     }
 }

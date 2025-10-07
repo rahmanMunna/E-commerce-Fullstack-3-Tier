@@ -24,7 +24,7 @@ const Steps = ({ statusId }) => {
                 </li>
 
                 <li
-                    className={`step ${statusId === 4 ? "step-primary" : ""}`}
+                    className={`step ${statusId === 5 ? "step-primary" : ""}`}
                 >
                     Delivered
                 </li>

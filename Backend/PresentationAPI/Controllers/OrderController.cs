@@ -24,7 +24,8 @@ namespace PresentationAPI.Controllers
         {
             try
             {
-                var result = OrderService.PlaceOrder(items);
+                var tKey = Request.Headers.Authorization.ToString();    
+                var result = OrderService.PlaceOrder(items,tKey);
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
@@ -191,7 +192,7 @@ namespace PresentationAPI.Controllers
         {
             try
             {
-                var result = OrderStatusService.ChangeStatusToProcessing(id);
+                var result = OrderService.ConfirmOrder(id);
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
@@ -252,20 +253,22 @@ namespace PresentationAPI.Controllers
             }
         }
 
-        //[HttpPut]
-        //[Route("cancelled/{id}")]
-        //public HttpResponseMessage CancelledOrder(int id)
-        //{
-        //    try
-        //    {
-        //        //var result = OrderService.Get(id);
-        //        return Request.CreateResponse(HttpStatusCode.OK, result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-        //    }
-        //}
+        [Logged("Admin", "Deliveryman")]
+        [HttpPut]
+        [Route("cancel/{oId}")]
+        public HttpResponseMessage CancelledOrder(int oId)
+        {
+            try
+            {
+                var tKey = Request.Headers.Authorization.ToString();
+                var result = OrderService.CancelOrder(oId,tKey); 
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
 
     }
 }

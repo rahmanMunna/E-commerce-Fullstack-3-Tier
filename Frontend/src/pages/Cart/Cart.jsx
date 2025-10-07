@@ -8,6 +8,7 @@ import api from '../../Interceptor/Api';
 const Cart = () => {
     const { cart, setCart } = useContext(CartContext);
     const [step, setStep] = useState(false);
+    const [isChecked,setIsChecked] = useState(true);
     const { user } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -136,7 +137,11 @@ const Cart = () => {
                                     <div className="flex justify-between">
                                         <span>Method</span>
                                         <span>
-                                            <input type="radio" name="radio-1" className="radio" checked="checked" /> Cash on Delivery
+                                            <input
+                                                type="radio"
+                                                checked={isChecked}
+                                                onChange={(e) => setIsChecked(e.target.checked)}
+                                            /> Cash on Delivery
                                         </span>
                                     </div>
 

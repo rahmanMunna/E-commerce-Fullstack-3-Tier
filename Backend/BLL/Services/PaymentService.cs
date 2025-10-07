@@ -31,7 +31,7 @@ namespace BLL.Services
                 OrderId = oId,
                 PaymentStatusId = 2, // Paid
                 ProcessedAt = DateTime.Now,
-                TransactionTypeId = 2 // Debit
+                TransactionTypeId = 1 // Debit
             };
 
             var paymentUpdated = DataAccessFactory.PaymentData().Update(payment);

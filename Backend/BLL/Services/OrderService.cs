@@ -24,7 +24,7 @@ namespace BLL.Services
             }
             return total;
         }
-        public static bool PlaceOrder(List<CartItem> items)
+        public static bool PlaceOrder(List<CartItem> items,string tKey)
         {
             //corner case
             if (items.Count == 0)
@@ -32,7 +32,7 @@ namespace BLL.Services
 
             var total = GetTotalPrice(items);
 
-            var orderCreated = AddToOrder(total);
+            var orderCreated = AddToOrder(total,tKey);
 
             if (orderCreated != null &&
                 OrderDetailService.AddOrderDetails(items, orderCreated.Id) &&
@@ -43,15 +43,17 @@ namespace BLL.Services
             }
             return false;
         }
-        public static Order AddToOrder(double total)
+        public static Order AddToOrder(double total,string tKey)
         {
+            var cId = CustomerService.GetCustomerByToken(tKey).Id;
+
             Order order = new Order()
             {
                 Date = DateTime.Now,
                 ProductTotal = total,
                 ShippingCharge = 60, // hardcoded for now
                 Total = total + 60,
-                CustomerId = 1, // hardcoded for now
+                CustomerId = cId, // hardcoded for now
                 OrderStatusID = 1 // Placed
             };
             var orderCreated = DataAccessFactory.OrderDataExtended().PlaceOrder(order);
@@ -136,9 +138,77 @@ namespace BLL.Services
             if (result)
             {
                 return OrderStatusService.ChangeStatusToDelivered(orderId);
-                //return UpdateStatus(orderId, 5); // 5 = Delivered
+                
             }
             return result;
         }
+
+        public static ConfirmOrderResult ConfirmOrder(int orderId)
+        {
+            var order = Get(orderId); 
+            if(order == null) return new ConfirmOrderResult { Success = false };
+
+            var orderDetails = DataAccessFactory.OrderDetailDataExtended().GetByOrderId(orderId);
+            if(orderDetails.Count == 0) return new ConfirmOrderResult { Success = false };
+
+            var (isAvailable, notEnoughStockProducts) = ValidateStock(orderDetails);
+            if(!isAvailable)
+            {
+                return new ConfirmOrderResult
+                {
+                    Success = false,
+                    NotEnoughStockProducts = MapperHelper.GetMapper().Map<List<ProductDTO>>(notEnoughStockProducts)
+                };
+            }
+
+            var result = DataAccessFactory.OrderDataExtended().AdjustQuantityAfterConfirm(orderDetails);
+            if(!result)
+            {
+                return new ConfirmOrderResult { Success = false };
+            }
+            var statusChanged = OrderStatusService.ChangeStatusToProcessing(orderId);   
+           
+            return new ConfirmOrderResult { Success = statusChanged };
+        }    
+        public static bool CancelOrder(int oId,string tKey)
+        {
+            var tokenObj = DataAccessFactory.TokenDataExtented().GetByTKey(tKey);
+            if (tokenObj == null) return false;
+
+            string cancelBy;
+            if(tokenObj.User.Role == "Admin")
+            {
+                 cancelBy = "Admin";
+            }
+            else
+            {
+                 cancelBy = "Customer";
+            }
+
+                var Order = new Order()
+                {
+                    Id = oId,
+                    CancelledAt = DateTime.Now,
+                    CancelledBy = cancelBy,
+                    OrderStatusID = 6 // Cancelled
+                };
+            var result = DataAccessFactory.OrderData().Update(Order); 
+            return result;
+        }
+        private static (bool,List<Product>) ValidateStock(List<OrderDetail> orderDetails)
+        {
+            List<Product> notEnoughStockProducts = new List<Product>();
+            foreach (var od in orderDetails)
+            {
+                if (od.Product.StockQty < od.Qty)
+                {
+                    notEnoughStockProducts.Add(od.Product);
+                }
+            }
+            
+            bool isAvailable = !notEnoughStockProducts.Any();
+            return (isAvailable,notEnoughStockProducts);    
+        }
+        
     }
 }

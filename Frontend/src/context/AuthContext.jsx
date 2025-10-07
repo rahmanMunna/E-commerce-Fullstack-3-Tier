@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
+import api from "../Interceptor/Api";
 
 
 const AuthContext = createContext();
@@ -48,8 +49,9 @@ export const AuthProvider = ({ children }) => {
     }
 
     const logout = () => {
-        localStorage.clear();
-        // navigate("/login", { replace: true }); 
+        return api.post("authentication/logout");
+        
+        
     }
     useEffect(() => {
         getUserByUserId();

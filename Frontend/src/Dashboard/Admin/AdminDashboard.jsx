@@ -4,8 +4,11 @@ import AdminSidebar from '../../layouts/Admin/AdminSidebar';
 import AllPlacedOrders from '../../pages/AllPlacedOrders/AllPlacedOrders';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AuthContext from '../../context/AuthContext';
 
 const AdminDashboard = () => {
+
+    
     return (
         <div className="flex flex-col min-h-screen">
             {/* Navbar (fixed at top) */}

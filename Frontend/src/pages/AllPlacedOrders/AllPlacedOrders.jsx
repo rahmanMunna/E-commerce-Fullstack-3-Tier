@@ -1,14 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import OrdersTable from "../../components/OrdersTable";
 import api from "../../Interceptor/Api";
-import AuthContext from "../../context/AuthContext";
+import CancelButtonModal from "../../components/Modal/CancelButtonModal";
 
 const AllPlacedOrders = () => {
 
     const [placedOrders, setPlacedOrders] = useState([]);
-
-    const { user } = useContext(AuthContext);
-    console.log(user)
 
     useEffect(() => {
         const route = "order/getPlacedOrder";
@@ -30,6 +27,10 @@ const AllPlacedOrders = () => {
             })
     }, []);
 
+    const handleCancel = (oId) => {
+        alert(oId)
+    }
+    console.log(placedOrders)
 
 
     return (
@@ -50,7 +51,10 @@ const AllPlacedOrders = () => {
                         placedOrders.length > 0 &&
                         placedOrders.map((placedOrder, idx) => {
                             return (
-                                <OrdersTable key={idx} order={placedOrder} ></OrdersTable>
+                                <>
+                                    <CancelButtonModal handleCancel={handleCancel} oId={placedOrder.Id}></CancelButtonModal>
+                                    <OrdersTable key={idx} order={placedOrder} ></OrdersTable>
+                                </>
                             )
                         })
                     }

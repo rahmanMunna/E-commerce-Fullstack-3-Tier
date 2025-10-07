@@ -15,10 +15,13 @@ namespace DAL.Interfaces
         List<Order> GetAllProcessingOrder();
         List<Order> GetAllAssignedOrder();
         List<Order> GetAllOnTheWayOrder();
+        List<Order> GetByCustomerId(int cId);
 
         bool UpdateOrderStatus(int oId,int sId);
         bool CancelOrder(int oId,string name);  
         bool AssignDeliveryMan(int oId, int dId);
+
+        bool AdjustQuantityAfterConfirm(List<OrderDetail> orderDetails);
 
     }
 }

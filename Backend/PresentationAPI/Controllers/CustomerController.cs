@@ -1,4 +1,5 @@
-﻿using BLL.Services;
+﻿using BLL.Auth;
+using BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,61 @@ namespace PresentationAPI.Controllers
             try
             {
                 var response = CustomerService.GetByUserId(uId);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [Logged("Customer")]    
+        [HttpGet]
+        [Route("trackOrders")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage TrackOrders()
+        {
+            try
+            {
+                var tKey = Request.Headers.Authorization.ToString();    
+                var response = CustomerService.TrackOrders(tKey);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+
+        [Logged("Customer")]
+        [HttpGet]
+        [Route("myOrders")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage MyOrders()
+        {
+            try
+            {
+                var tKey = Request.Headers.Authorization.ToString();
+                var response = CustomerService.MyOrders(tKey);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [Logged("Customer")]
+        [HttpGet]
+        [Route("cancelledOrders")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage CancelledOrders()
+        {
+            try
+            {
+                var tKey = Request.Headers.Authorization.ToString();
+                var response = CustomerService.CancelledOrders(tKey);
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)

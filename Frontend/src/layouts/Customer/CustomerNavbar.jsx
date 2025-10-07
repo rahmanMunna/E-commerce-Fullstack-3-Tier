@@ -1,15 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import CartContext from "../../context/CartContext"
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { toast } from "react-toastify";
+
 
 const CustomerNavbar = () => {
     const { cart } = useContext(CartContext);
     const [total, setTotal] = useState(0);
+    const navigate = useNavigate();
 
     const { user, logout } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
+
+    const handleLogout = async () => {
+        const response = await logout();
+        console.log(response);
+        if (response.data) {
+            // toast.success("Logged out");
+            localStorage.clear();
+            navigate("/login")
+
+        }
+        else{
+            toast.success("something went wrong");
+        }
+    }
 
     const linkClasses = ({ isActive }) =>
         `relative px-3 py-2 transition-all duration-300 font-medium ${isActive
@@ -22,7 +38,7 @@ const CustomerNavbar = () => {
     }
 
     // toast.success(`Welcome ${user?.Name}`);
-    
+
 
     useEffect(() => {
         const newTotal = cart.reduce((sum, element) => {
@@ -34,7 +50,7 @@ const CustomerNavbar = () => {
         }, 0);
         setTotal(newTotal);
     }, [cart]);
-    
+
 
     return (
         <div className="w-full bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-600 shadow-lg sticky top-0 z-50">
@@ -48,10 +64,9 @@ const CustomerNavbar = () => {
                 {/* Center Nav */}
                 <div className="hidden md:flex gap-8 font-medium">
                     <NavLink to="/customerDashboard" className={linkClasses}>Shop</NavLink>
-                    <NavLink to="/deals" className={linkClasses}>Deals</NavLink>
-                    <NavLink to="/about" className={linkClasses}>About</NavLink>
-                    <NavLink to="/contact" className={linkClasses}>Contact</NavLink>
-
+                    <NavLink to="trackOrders" className={linkClasses}>Track Orders</NavLink>
+                    <NavLink to="cancelled" className={linkClasses}>Cancelled</NavLink>
+                    <NavLink to="myOrders" className={linkClasses}>My Orders</NavLink>
                 </div>
 
                 {/* Right Side */}
@@ -99,7 +114,7 @@ const CustomerNavbar = () => {
                             </button>
                             <span className="hidden sm:block">{user?.Name}</span>
                         </div>
-                        <button onClick={logout} className="btn border-2 border-red-800 text-red-700 hover:scale-105 hover:btn-error hover:text-white transition 2s">
+                        <button onClick={handleLogout} className="btn border-2 border-red-800 text-red-700 hover:scale-105 hover:btn-error hover:text-white transition 2s">
                             Logout
                         </button>
 

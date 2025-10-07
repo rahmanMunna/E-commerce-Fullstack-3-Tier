@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { data, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Steps from '../../components/Steps';
 import OrderCustomerInfo from '../../components/OrderDetail/OrderCustomerInfo';
 import Shipping_PaymentInfo from '../../components/OrderDetail/Shipping_PaymentInfo';
 import OrderItems from '../../components/OrderDetail/OrderItems';
 import api from '../../Interceptor/Api';
-
+import { useRef } from "react";
 
 
 const PlaceOrderDetails = () => {
@@ -20,17 +20,36 @@ const PlaceOrderDetails = () => {
     const params = useParams();
     const id = params.Id;
 
+    const componentRef = useRef(null);
+    
+
+    const handlePrint = ()=>{
+        
+    }
+
+
 
     const handleConfirm = (pId) => {
 
         api.put(`order/processing/${pId}`)
             .then(res => {
-                if (res.data) {
+                console.log(res.data)
+                if (res.data.Success) {
                     setStatusId(2)
                     toast.success("Order has been confirmed")
                     return;
                 }
-                toast.success("Order couldn't confirmed")
+                else if(!res.data.success && res.data.NotEnoughStockProducts.length === 0)
+                {
+                    toast.error("Due to Server Issue, order not confirmed");
+                }
+                else if(!res.data.success && res.data.NotEnoughStockProducts.length > 0)
+                {
+                    res.data.NotEnoughStockProducts.map(product =>{
+                        return toast.error(`${product.Name} is Not Available -- ${product.StockQty} Qty available`)
+                    })
+                }
+                
             })
             .catch(err => {
                 console.error(err)
@@ -83,6 +102,7 @@ const PlaceOrderDetails = () => {
                     setOrderDetail(res.data);
                     setStatusId(res.data[0]?.Order?.OrderStatusID);
                     setLoading(false)
+                    console.log(res.data);
                     return;
                 }
                 alert("Unauthorized Action")
@@ -94,8 +114,11 @@ const PlaceOrderDetails = () => {
         loadAllDeliveryman();
     }, [statusId])
 
+    // console.log(componentRef.current)
+
 
     return (
+
         <div>
             {
                 loading ?
@@ -108,17 +131,23 @@ const PlaceOrderDetails = () => {
 
                             {/* Order Details */}
                             <div className="md:w-3/4 p-6 bg-white shadow-lg rounded-2xl">
-                                {/* Order item  */}
-                                <OrderItems orderDetail={orderDetail} id={id}></OrderItems>
+                                <div ref={componentRef}>
+                                    {/* Order item  */}
+                                    <OrderItems orderDetail={orderDetail} id={id}></OrderItems>
 
-                                {/* Order + Customer Info */}
-                                <OrderCustomerInfo orderDetail={orderDetail}></OrderCustomerInfo>
-                                {/* Shipping address */}
-                                <Shipping_PaymentInfo orderDetail={orderDetail}></Shipping_PaymentInfo>
+                                    {/* Order + Customer Info */}
+                                    <OrderCustomerInfo orderDetail={orderDetail}></OrderCustomerInfo>
+                                    {/* Shipping address */}
+                                    <Shipping_PaymentInfo orderDetail={orderDetail}></Shipping_PaymentInfo>
+                                </div>
+                                
 
                                 {/* Buttons */}
-                                <div className="flex flex-col md:flex-row gap-4 mt-4">
-                                    <button className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg">
+                                <div  className="flex flex-col md:flex-row gap-4 mt-4">
+                                    <button onClick={handlePrint} className="flex-1 
+                                    bg-gradient-to-r from-indigo-600 to-purple-600 
+                                    text-white px-4 py-2 rounded-lg
+                                    hover:scale-105 hover:cursor-pointer transition 3s">
                                         Print Receipt
                                     </button>
                                     {
@@ -130,7 +159,7 @@ const PlaceOrderDetails = () => {
                                 </div>
                             </div>
                             {
-                                statusId <= 2 &&
+                                statusId === 2 &&
                                 <form onSubmit={handleAssignBtn} action="" className='flex items-center justify-center gap-2 h-10 '>
                                     <select className='border p-2' name="deliveryman" id="">
                                         <option selected disabled value="">Select an delivery man</option>Select an delivery man

@@ -1,10 +1,24 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const AdminSidebar = () => {
 
     const { logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogout = async () => {
+        const response = await logout();
+        console.log(response);
+        if (response.data) {
+            // toast.success("Logged out");
+            localStorage.clear();
+            navigate("/login")
+        }
+        else {
+            toast.success("something went wrong");
+        }
+    }
 
     const linkCss = ({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg transition 
@@ -52,7 +66,9 @@ const AdminSidebar = () => {
                 <NavLink to="/adminDashboard/accounts" className={linkCss}>
                     💰 Accounts
                 </NavLink>
-                <button onClick={logout} className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 transition">
+                <button onClick={handleLogout}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+                 bg-red-500 hover:bg-white hover:text-black hover:cursor-pointer hover:scale-105 transition">
                     🔒 Logout
                 </button>
             </div>
