@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
 import api from "../Interceptor/Api";
+import { toast } from "react-toastify";
 
 
 const AuthContext = createContext();
@@ -47,11 +48,11 @@ export const AuthProvider = ({ children }) => {
 
 
     }
+    
 
     const logout = () => {
         return api.post("authentication/logout");
-        
-        
+
     }
     useEffect(() => {
         getUserByUserId();

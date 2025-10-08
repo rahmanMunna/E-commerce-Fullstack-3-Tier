@@ -6,8 +6,7 @@ import CancelButtonModal from "../../components/Modal/CancelButtonModal";
 const AllPlacedOrders = () => {
 
     const [placedOrders, setPlacedOrders] = useState([]);
-
-    useEffect(() => {
+    const loadData = () => {
         const route = "order/getPlacedOrder";
         api.get(route)
             .then(res => {
@@ -25,12 +24,13 @@ const AllPlacedOrders = () => {
                     console.log("PLease provide an Token")
                 }
             })
+    }
+    useEffect(() => {
+        loadData()
     }, []);
 
-    const handleCancel = (oId) => {
-        alert(oId)
-    }
-    console.log(placedOrders)
+   
+    
 
 
     return (
@@ -52,7 +52,7 @@ const AllPlacedOrders = () => {
                         placedOrders.map((placedOrder, idx) => {
                             return (
                                 <>
-                                    <CancelButtonModal handleCancel={handleCancel} oId={placedOrder.Id}></CancelButtonModal>
+                                    <CancelButtonModal loadData={loadData} key={placedOrder.Id}  oId={placedOrder.Id}></CancelButtonModal>
                                     <OrdersTable key={idx} order={placedOrder} ></OrdersTable>
                                 </>
                             )

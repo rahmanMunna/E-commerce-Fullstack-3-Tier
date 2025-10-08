@@ -101,11 +101,22 @@ namespace BLL.Services
             return MapperHelper.GetMapper().Map<List<OrderDTO>>(assignedOrders);    
 
         }
-
         public static List<OrderDTO> GetAllOnTheWayOrder()
         {
             var orders = DataAccessFactory.OrderDataExtended().GetAllOnTheWayOrder();
             return MapperHelper.GetMapper().Map<List<OrderDTO>>(orders);
+        }
+        public static List<OrderDTO> GetAlTodaysReceivedOrders(string tkey)
+        {
+            var allOrders = Get();      
+            var customer = CustomerService.GetCustomerByToken(tkey);
+
+            // filter todays orders -- based on todays date,customerId,status delivered only
+            var todaysOrders = allOrders.Where(o => o.Date.Date == DateTime.Now.Date
+                                                && o.CustomerId == customer.Id
+                                                && o.OrderStatusID == 5 // Delivered
+                                                ).ToList();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(todaysOrders);  
         }
         public static List<OrderDTO> TrackOrders()
         {
@@ -131,18 +142,22 @@ namespace BLL.Services
             return result;
 
         }
-
         public static bool DeliveredOrder(int orderId)
         {
             var result = PaymentService.UpdateAfterDelivery(orderId);
             if (result)
             {
-                return OrderStatusService.ChangeStatusToDelivered(orderId);
-                
+                var order = new Order()
+                {
+                    Id = orderId,
+                    DeliveredAt = DateTime.Now,
+                    OrderStatusID = 5 // Delivered
+                };
+                return DataAccessFactory.OrderData().Update(order);    
+
             }
             return result;
         }
-
         public static ConfirmOrderResult ConfirmOrder(int orderId)
         {
             var order = Get(orderId); 
@@ -185,13 +200,13 @@ namespace BLL.Services
                  cancelBy = "Customer";
             }
 
-                var Order = new Order()
-                {
+            var Order = new Order()
+            {
                     Id = oId,
                     CancelledAt = DateTime.Now,
                     CancelledBy = cancelBy,
                     OrderStatusID = 6 // Cancelled
-                };
+            };
             var result = DataAccessFactory.OrderData().Update(Order); 
             return result;
         }

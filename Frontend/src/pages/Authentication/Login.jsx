@@ -35,6 +35,7 @@ const Login = () => {
                 if (!res.ok) {
                     throw new Error("Network response was not ok " + res.status);
                 }
+                console.log(res)
                 return res.json()
             })
             .then(data => {
@@ -43,9 +44,10 @@ const Login = () => {
                     return
                 }
                 alert("Login Success")
-                localStorage.setItem("token", data.Tkey);
-                localStorage.setItem("role", data.User.Role);
-                localStorage.setItem("userId", data.UserId);
+                console.log(data)
+                localStorage.setItem("token", data.tkey);
+                localStorage.setItem("role", data.role);
+                localStorage.setItem("userId", data.userId);
 
                 redirectToDashboard()
                 getUserByUserId()

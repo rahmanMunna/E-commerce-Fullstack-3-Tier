@@ -16,6 +16,7 @@ namespace BLL.DTOs
         public int OrderStatusID { get; set; }
         public string CancelledBy { get; set; }
         public DateTime CancelledAt { get; set; }
+        public DateTime DeliveredAt { get; set; }
 
         public virtual OrderStatusDTO OrderStatus { get; set; }
         public virtual CustomerDTO Customer { get; set; }   

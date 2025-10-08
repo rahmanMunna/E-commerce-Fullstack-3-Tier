@@ -332,6 +332,7 @@
     <NavigationProperty Name="OrderStatus" Relationship="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses" FromRole="Order" ToRole="OrderStatus" />
     <NavigationProperty Name="OrderTrackers" Relationship="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders" FromRole="Order" ToRole="OrderTracker" />
     <NavigationProperty Name="Payments" Relationship="EcommerceMSWebAPIModel.FK_Payments_Orders" FromRole="Order" ToRole="Payment" />
+    <Property Name="DeliveredAt" Type="DateTime" Precision="3" />
   </EntityType>
   <Association Name="FK_Orders_Customers">
     <End Type="EcommerceMSWebAPIModel.Customer" Role="Customer" Multiplicity="1" />

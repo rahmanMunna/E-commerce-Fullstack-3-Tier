@@ -19,6 +19,9 @@ import PrivateRoute from "./PrivateRoute";
 import CustomerTrackOrders from "../pages/Customer/CustomerTrackOrders";
 import MyOrders from "../pages/Customer/MyOrders";
 import CancelledOrders from "../pages/Customer/CancelledOrders";
+import CustomerOrderDetails from "../pages/Customer/CustomerOrderDetails";
+import TodayReceivedOrders from "../pages/Customer/TodayReceivedOrders";
+import FinancialSummary from '../pages/FinancialSummary/FinancialSummary';
 
 const router = createBrowserRouter([
     {
@@ -35,6 +38,7 @@ const router = createBrowserRouter([
         element: <UnAuthorized />,
     },
 
+
     // Admin Layout with nested routes
     {
         element: <PrivateRoute allowedRoles={["Admin"]} />,
@@ -49,7 +53,12 @@ const router = createBrowserRouter([
                     { path: "assignedOrders", element: <AssignedOrders /> },
                     { path: "trackOrders", element: <TrackOrders /> },
                     { path: "manageProducts/addProduct", element: <AddProduct /> },
-                    { path: "viewPlaceOrderDetails/:Id", element: <PlaceOrderDetails /> },
+                    { path: "financial", element: <FinancialSummary /> },
+                    {
+                        path: "viewPlaceOrderDetails/:Id",
+                        element: <PlaceOrderDetails />
+                    },
+
                 ],
             }
         ]
@@ -67,6 +76,14 @@ const router = createBrowserRouter([
                     { path: "myOrders", element: <MyOrders /> },
                     { path: "cancelled", element: <CancelledOrders /> },
                     { path: "cart", element: <Cart /> },
+                    {
+                        path : "todaysReceivedOrders",
+                        element : <TodayReceivedOrders></TodayReceivedOrders>
+                    },
+                    {
+                        path: "trackOrderDetails/:Id",
+                        element: <CustomerOrderDetails />
+                    },
                 ],
             }
         ]

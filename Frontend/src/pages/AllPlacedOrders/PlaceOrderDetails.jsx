@@ -27,8 +27,6 @@ const PlaceOrderDetails = () => {
         
     }
 
-
-
     const handleConfirm = (pId) => {
 
         api.put(`order/processing/${pId}`)

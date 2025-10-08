@@ -45,13 +45,14 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="ProductTotal" Type="float" Nullable="false" />
-    <Property Name="ShippingCharge" Type="float" Nullable="false" />
     <Property Name="Total" Type="float" Nullable="false" />
+    <Property Name="ShippingCharge" Type="float" Nullable="false" />
     <Property Name="OrderStatusID" Type="int" Nullable="false" />
     <Property Name="CancelledBy" Type="varchar" MaxLength="50" />
     <Property Name="CancelledAt" Type="datetime" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="DeliveryManId" Type="int" />
+    <Property Name="DeliveredAt" Type="datetime" />
   </EntityType>
   <EntityType Name="OrderStatuses">
     <Key>

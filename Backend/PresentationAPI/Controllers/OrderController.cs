@@ -167,6 +167,24 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Customer")]
+        [HttpGet]
+        [Route("todayReceivedOrders")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage GetTodaysReceivedOrders()
+        {
+            try
+            {
+                var tkey = Request.Headers.Authorization.ToString();
+                var result = OrderService.GetAlTodaysReceivedOrders(tkey);
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
         [Logged("Admin")]
         [HttpGet]
         [Route("trackOrders")]
@@ -244,7 +262,7 @@ namespace PresentationAPI.Controllers
         {
             try
             {
-                var result = OrderService.DeliveredOrder(oId);// can be change cz. of payment confirmation
+                var result = OrderService.DeliveredOrder(oId);
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
@@ -256,6 +274,7 @@ namespace PresentationAPI.Controllers
         [Logged("Admin", "Deliveryman")]
         [HttpPut]
         [Route("cancel/{oId}")]
+        [EnableCors(origins: "*", headers: "*", methods: "PUT")]
         public HttpResponseMessage CancelledOrder(int oId)
         {
             try
@@ -268,7 +287,11 @@ namespace PresentationAPI.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+
+            
         }
+
+       
 
     }
 }

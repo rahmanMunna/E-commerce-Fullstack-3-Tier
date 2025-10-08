@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import CancelButtonModal from "./Modal/CancelButtonModal";
 
 const OrdersTable = ({ order, handleBtn }) => {
 
@@ -55,7 +54,7 @@ const OrdersTable = ({ order, handleBtn }) => {
                         </Link>
                         <Link >
                             <button
-                                onClick={() => document.getElementById("cancel-btn-modal").showModal()}
+                                onClick={() => document.getElementById(`cancel-btn-modal-${order.Id}`).showModal()}
                                 className="px-4 py-2 rounded-lg text-sm font-medium text-white 
                             bg-gradient-to-r from-red-600 to-red-800
                             hover:from-blue-300 hover:to-red-900  hover:cursor-grab 

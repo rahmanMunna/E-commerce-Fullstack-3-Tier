@@ -34,7 +34,7 @@ namespace BLL.Services
 
             // get the orders except delivered ones
             var onGoingOrders = (from o in orders
-                                where o.OrderStatusID != 5
+                                where o.OrderStatusID != 5 && o.OrderStatusID != 6
                                 select o).ToList();    
 
             return MapperHelper.GetMapper().Map<List<OrderDTO>>(onGoingOrders);

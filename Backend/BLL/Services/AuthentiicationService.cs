@@ -24,7 +24,17 @@ namespace BLL.Services
             }
             return null;
             
-        }   
+        }
+        //public static UserDTO ValidateUser (string userId, string password)
+        //{
+        //    var user = DataAccessFactory.UserData().Get(userId);
+        //    if (user != null && user.Password == password)
+        //    {
+        //        return MapperHelper.GetMapper().Map<UserDTO>(user); 
+
+        //    }
+        //    return null;
+        //}
 
         private static Token GenerateToken(string userId)
         {

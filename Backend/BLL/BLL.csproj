@@ -92,10 +92,13 @@
     <Compile Include="Helper\MapperHelper.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ConfirmOrderResult.cs" />
+    <Compile Include="Models\FinancialSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthentiicationService.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\DeliverymanService.cs" />
+    <Compile Include="Services\FinanciaService.cs" />
+    <Compile Include="Services\OrderAnalyticsService.cs" />
     <Compile Include="Services\OrderDetailService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\OrderStatusService.cs" />

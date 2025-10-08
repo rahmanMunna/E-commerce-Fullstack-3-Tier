@@ -121,6 +121,8 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DeliverymanController.cs" />
+    <Compile Include="Controllers\FinancialAnalyticsController.cs" />
+    <Compile Include="Controllers\OrderAnalyticsController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -128,6 +130,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AssignDeliveryman.cs" />
+    <Compile Include="Models\DateRange.cs" />
     <Compile Include="Models\LoggedUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

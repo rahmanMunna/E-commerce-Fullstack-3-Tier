@@ -63,8 +63,8 @@ const AdminSidebar = () => {
                     📋 All Orders
                 </NavLink>
 
-                <NavLink to="/adminDashboard/accounts" className={linkCss}>
-                    💰 Accounts
+                <NavLink to="/adminDashboard/financial" className={linkCss}>
+                    💰 Financial
                 </NavLink>
                 <button onClick={handleLogout}
                     className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg

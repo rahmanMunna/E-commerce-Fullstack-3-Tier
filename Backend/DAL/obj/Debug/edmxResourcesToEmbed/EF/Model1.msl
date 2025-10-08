@@ -133,6 +133,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="EcommerceMSWebAPIModel.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="DeliveredAt" ColumnName="DeliveredAt" />
           <ScalarProperty Name="DeliveryManId" ColumnName="DeliveryManId" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="CancelledAt" ColumnName="CancelledAt" />

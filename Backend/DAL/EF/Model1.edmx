@@ -50,13 +50,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="ProductTotal" Type="float" Nullable="false" />
-          <Property Name="ShippingCharge" Type="float" Nullable="false" />
           <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="ShippingCharge" Type="float" Nullable="false" />
           <Property Name="OrderStatusID" Type="int" Nullable="false" />
           <Property Name="CancelledBy" Type="varchar" MaxLength="50" />
           <Property Name="CancelledAt" Type="datetime" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="DeliveryManId" Type="int" />
+          <Property Name="DeliveredAt" Type="datetime" />
         </EntityType>
         <EntityType Name="OrderStatuses">
           <Key>
@@ -739,6 +740,7 @@
           <NavigationProperty Name="OrderStatus" Relationship="EcommerceMSWebAPIModel.FK_Orders_OrderStatuses" FromRole="Order" ToRole="OrderStatus" />
           <NavigationProperty Name="OrderTrackers" Relationship="EcommerceMSWebAPIModel.FK_OrderTrackers_Orders" FromRole="Order" ToRole="OrderTracker" />
           <NavigationProperty Name="Payments" Relationship="EcommerceMSWebAPIModel.FK_Payments_Orders" FromRole="Order" ToRole="Payment" />
+          <Property Name="DeliveredAt" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Orders_Customers">
           <End Type="EcommerceMSWebAPIModel.Customer" Role="Customer" Multiplicity="1" />
@@ -973,6 +975,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="EcommerceMSWebAPIModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="DeliveredAt" ColumnName="DeliveredAt" />
                 <ScalarProperty Name="DeliveryManId" ColumnName="DeliveryManId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="CancelledAt" ColumnName="CancelledAt" />

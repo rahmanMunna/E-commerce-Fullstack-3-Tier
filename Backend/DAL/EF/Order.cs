@@ -32,6 +32,7 @@ namespace DAL.EF
         public Nullable<System.DateTime> CancelledAt { get; set; }
         public int CustomerId { get; set; }
         public Nullable<int> DeliveryManId { get; set; }
+        public Nullable<System.DateTime> DeliveredAt { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Deliveryman Deliveryman { get; set; }

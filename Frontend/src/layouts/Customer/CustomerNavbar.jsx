@@ -67,6 +67,7 @@ const CustomerNavbar = () => {
                     <NavLink to="trackOrders" className={linkClasses}>Track Orders</NavLink>
                     <NavLink to="cancelled" className={linkClasses}>Cancelled</NavLink>
                     <NavLink to="myOrders" className={linkClasses}>My Orders</NavLink>
+                    <NavLink to="todaysReceivedOrders" className={linkClasses}>Today's Received Orders</NavLink>
                 </div>
 
                 {/* Right Side */}

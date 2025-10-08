@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import OrdersTable from "../../components/OrdersTable";
 import api from "../../Interceptor/Api";
+import CancelButtonModal from "../../components/Modal/CancelButtonModal";
 
 const ProcessingOrders = () => {
 
     const [ordersProcessing, setOrdersProcessing] = useState([])
     // console.log(ordersProcessing)
-
-    useEffect(() => {
+    const loadData = () => {
         const url = "order/getProcessingOrder";
         api.get(url)
             .then(res => {
@@ -20,6 +20,10 @@ const ProcessingOrders = () => {
             .catch(err => {
                 console.error(err)
             })
+    }
+
+    useEffect(() => {
+        loadData();
     }, [])
 
     return (
@@ -37,7 +41,16 @@ const ProcessingOrders = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-100 bg-white">
                     {
-                        ordersProcessing.map(orderProcessing => <OrdersTable order={orderProcessing} ></OrdersTable>)
+
+                        ordersProcessing.map((orderProcessing, idx) => {
+                            return (
+                                <>
+                                    <CancelButtonModal loadData={loadData} key={orderProcessing.Id} oId={orderProcessing.Id}></CancelButtonModal>
+                                    <OrdersTable key={idx} order={orderProcessing} ></OrdersTable>
+                                </>
+                            )
+                        })
+
                     }
                 </tbody>
 
