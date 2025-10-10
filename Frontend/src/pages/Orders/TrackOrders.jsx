@@ -2,111 +2,124 @@ import { useEffect, useState } from "react";
 import api from "../../Interceptor/Api";
 import { Link } from "react-router-dom";
 
-
 const TrackOrders = () => {
-
     const [trackOrders, setTrackOrder] = useState([]);
-    const [countDeliveredOrders, setCountDeliveredOrders] = useState(0)
-    const [countOnTheWayOrders, setCountOnTheWayOrders] = useState(0)
-    const [countAssignedOrders, setCountAssignedOrders] = useState(0)
+    const [countDeliveredOrders, setCountDeliveredOrders] = useState(0);
+    const [countOnTheWayOrders, setCountOnTheWayOrders] = useState(0);
+    const [countAssignedOrders, setCountAssignedOrders] = useState(0);
 
-    function convertDateFormate(date) {
-        return new Date().toLocaleString("en-US", {
-            year: "numeric",    // 2025
-            month: "short",     // Sep
-            day: "numeric",     // 22
-            hour: "2-digit",    // 05
-            minute: "2-digit",  // 31
-            hour12: true        // AM/PM format
-        })
-    }
+    const convertDateFormate = (date) =>
+        new Date(date).toLocaleString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+        });
 
-
-
-    function count(orders, statusId) {
-        const selectedOrder = orders.filter(order => order.OrderStatusID === statusId)
-        console.log(selectedOrder.length)
-        return selectedOrder.length;
-    }
+    const count = (orders, statusId) =>
+        orders.filter((order) => order.OrderStatusID === statusId).length;
 
     const loadAllData = () => {
-        const url = "order/trackOrders";
-        api.get(url)
-            .then(res => {
+        api
+            .get("order/trackOrders")
+            .then((res) => {
                 if (res.status !== 200) {
                     alert("Unauthorized action");
-                    return
+                    return;
                 }
-                setTrackOrder(res.data)
-                let c = count(res.data, 3)
-                setCountAssignedOrders(c)
-                c = count(res.data, 4)
-                setCountOnTheWayOrders(c)
-                c = count(res.data, 5)
-                setCountDeliveredOrders(c)
+                setTrackOrder(res.data);
+                setCountAssignedOrders(count(res.data, 3));
+                setCountOnTheWayOrders(count(res.data, 4));
+                setCountDeliveredOrders(count(res.data, 5));
             })
-            .catch(err => {
-                console.error(err)
-            })
-    }
-    console.log(trackOrders)
+            .catch((err) => console.error(err));
+    };
 
-    useEffect(loadAllData, [])
+    useEffect(loadAllData, []);
 
     return (
-        <div>
-            {
-                trackOrders.length > 0 &&
-                <div >
-                    <div className="flex gap-3">
-                        <h1>Total Track Orders : {trackOrders.length}</h1>|
-                        <h1>Assigned Orders : {countAssignedOrders}</h1>|
-                        <h1>On The way Orders : {countOnTheWayOrders}</h1>|
-                        <h1>Delivered Orders : {countDeliveredOrders}</h1>|
+        <div className="p-6 bg-gray-50 min-h-screen">
+            {trackOrders.length > 0 && (
+                <>
+                    {/* Summary Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                        <div className="bg-white shadow-md rounded-lg p-4 text-center">
+                            <h2 className="text-sm text-gray-500">Total Orders</h2>
+                            <p className="text-2xl font-bold text-indigo-600">{trackOrders.length}</p>
+                        </div>
+                        <div className="bg-white shadow-md rounded-lg p-4 text-center">
+                            <h2 className="text-sm text-gray-500">Assigned</h2>
+                            <p className="text-2xl font-bold text-yellow-600">{countAssignedOrders}</p>
+                        </div>
+                        <div className="bg-white shadow-md rounded-lg p-4 text-center">
+                            <h2 className="text-sm text-gray-500">On The Way</h2>
+                            <p className="text-2xl font-bold text-blue-600">{countOnTheWayOrders}</p>
+                        </div>
+                        <div className="bg-white shadow-md rounded-lg p-4 text-center">
+                            <h2 className="text-sm text-gray-500">Delivered</h2>
+                            <p className="text-2xl font-bold text-green-600">{countDeliveredOrders}</p>
+                        </div>
                     </div>
-                    <div>
-                        <table className="table  text-center">
-                            <thead>
+
+                    {/* Orders Table */}
+                    <div className="overflow-x-auto bg-white rounded-xl shadow-lg ring-1 ring-gray-200">
+                        <table className="min-w-full text-sm text-left">
+                            <thead className="bg-gray-100 text-gray-700 uppercase font-semibold tracking-wide">
                                 <tr>
-                                    <th>Order Id</th>
-                                    <th>Customer Name</th>                                  
-                                    <th>Order Date</th>
-                                    <th>Total</th>
-                                    <th>Shipping Address</th>
-                                    <th>Assigned Deliveryman</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th className="px-6 py-4">Order ID</th>
+                                    <th className="px-6 py-4">Customer</th>
+                                    <th className="px-6 py-4">Date</th>
+                                    <th className="px-6 py-4">Total</th>
+                                    <th className="px-6 py-4">Shipping Address</th>
+                                    <th className="px-6 py-4">Deliveryman</th>
+                                    <th className="px-6 py-4">Status</th>
+                                    <th className="px-6 py-4 text-right">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {
-                                    trackOrders.map(to => {
-                                        return (
-                                            <tr>
-                                                <td>#{to?.Id}</td>
-                                                <td>{to?.Customer?.Name}</td>                                            
-                                                <td>{convertDateFormate(to?.Date)}</td>
-                                                <td>{to?.Total} TK</td>
-                                                <td>{to?.Customer?.ShippingAddress.City}, {to?.Customer?.ShippingAddress?.Location}</td>
-                                                <td>{to?.DeliveryManId}</td>
-                                                <td>{to?.OrderStatus?.Status}</td>
-                                                <td className="flex gap-2">
-                                                    <Link to={`/adminDashboard/viewPlaceOrderDetails/${to.Id}`} relative="path" className="btn btn-primary">
-                                                        View
-                                                    </Link>
-                                                    <Link className="btn btn-error">
-                                                        Cancel
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
-                                }
+                            <tbody className="divide-y divide-gray-100 bg-white">
+                                {trackOrders.map((to) => (
+                                    <tr key={to.Id} className="hover:bg-gray-50 transition duration-150 ease-in-out">
+                                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">#{to.Id}</td>
+                                        <td className="px-6 py-4 text-gray-700">{to.Customer?.Name}</td>
+                                        <td className="px-6 py-4 text-gray-600">{convertDateFormate(to.Date)}</td>
+                                        <td className="px-6 py-4 text-gray-700">{to.Total} TK</td>
+                                        <td className="px-6 py-4 text-gray-600">
+                                            {to.Customer?.ShippingAddress?.City}, {to.Customer?.ShippingAddress?.Location}
+                                        </td>
+                                        <td className="px-6 py-4 text-gray-700">{to.DeliveryManId || "—"}</td>
+                                        <td className="px-6 py-4">
+                                            <span
+                                                className={`px-3 py-1 rounded-full text-xs font-semibold ${to.OrderStatus?.Status === "Delivered"
+                                                        ? "bg-green-100 text-green-700"
+                                                        : to.OrderStatus?.Status === "On The Way"
+                                                            ? "bg-blue-100 text-blue-700"
+                                                            : to.OrderStatus?.Status === "Assigned"
+                                                                ? "bg-yellow-100 text-yellow-700"
+                                                                : "bg-gray-100 text-gray-700"
+                                                    }`}
+                                            >
+                                                {to.OrderStatus?.Status}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 text-right space-x-2">
+                                            <Link
+                                                to={`/adminDashboard/viewPlaceOrderDetails/${to.Id}`}
+                                                className="inline-block px-4 py-2 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 transition"
+                                            >
+                                                View
+                                            </Link>
+                                            
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
-                </div>
-            }
+                </>
+            )}
+
         </div>
     );
 };

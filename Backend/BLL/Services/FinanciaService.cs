@@ -3,8 +3,7 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BLL.Services
 {
@@ -23,7 +22,6 @@ namespace BLL.Services
 
             return sales;
         }
-
         public static double TotalRefund(DateTime startDate, DateTime endDate)
         {
             var payments = DataAccessFactory.PaymentData().Get();
@@ -37,8 +35,6 @@ namespace BLL.Services
 
             return refund;
         }
-
-
         public static double TodayTotalSale()
         {
             var payments = DataAccessFactory.PaymentData().Get();
@@ -52,7 +48,6 @@ namespace BLL.Services
             return todayTotalSales;
 
         }
-
         public static double TodayTotalRefund()
         {
             var payments = DataAccessFactory.PaymentData().Get();
@@ -65,7 +60,6 @@ namespace BLL.Services
             return todayTotalSales;
 
         }
-
         public static FinancialSummary GetFinancialSummary(DateTime startDate,DateTime endDate)
         {
             var totalSale = TotalSales(startDate, endDate);
@@ -93,5 +87,26 @@ namespace BLL.Services
 
             return summary;
         }
+
+        public static List<SalesWeekly> GetSalesWeekly()
+        {
+            var savenDaysAgo = DateTime.Now.AddDays(-6);
+
+            var payments = DataAccessFactory.PaymentData().Get();   
+            var saleWeekly = payments.Where(p => p.PaymentStatusId == 2 && p.ProcessedAt != null && p.ProcessedAt >= savenDaysAgo && p.TransactionTypeId == 1)
+                                     .GroupBy(p => p.ProcessedAt.Value.Date)
+                                     .Select(g => new SalesWeekly()
+                                     {
+                                         Date = g.Key,
+                                         sales = g.Sum(p => p.Amount)
+                                     })
+                                     .OrderBy(sw => sw.Date)
+                                     .Take(7)
+                                     .ToList();
+            
+            return saleWeekly;   
+
+        }
+
     }
 }

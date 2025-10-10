@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
 import api from "../Interceptor/Api";
-import { toast } from "react-toastify";
-
 
 const AuthContext = createContext();
 
@@ -14,6 +12,7 @@ export const AuthProvider = ({ children }) => {
 
         const userId = localStorage.getItem('userId');
         let url;
+    
         if (localStorage.getItem("role") === "Customer") {
             url = "customer/user";
         }
@@ -24,6 +23,7 @@ export const AuthProvider = ({ children }) => {
             return;
         }
 
+        // console.log(url)
         fetch(`https://localhost:44381/api/${url}/${userId}`)
             .then(res => {
                 return res.json();

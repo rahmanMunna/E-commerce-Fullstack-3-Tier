@@ -11,8 +11,7 @@ const CustomerNavbar = () => {
     const navigate = useNavigate();
 
     const { user, logout } = useContext(AuthContext);
-    // console.log(user)
-
+    
     const handleLogout = async () => {
         const response = await logout();
         console.log(response);
@@ -108,11 +107,11 @@ const CustomerNavbar = () => {
                     {/* Profile & logout */}
                     <div className="flex gap-3">
                         <div className="flex items-center gap-2 hover:text-yellow-300  transition">
-                            <button className="btn  rounded-full bg-yellow-300
+                            <Link to="customerProfile" className="btn  rounded-full bg-yellow-300
                              text-black flex items-center justify-center font-bold
                              hover:scale-105 transition 2s">
                                 {user?.Name[0]}
-                            </button>
+                            </Link>
                             <span className="hidden sm:block">{user?.Name}</span>
                         </div>
                         <button onClick={handleLogout} className="btn border-2 border-red-800 text-red-700 hover:scale-105 hover:btn-error hover:text-white transition 2s">

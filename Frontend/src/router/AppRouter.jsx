@@ -22,6 +22,9 @@ import CancelledOrders from "../pages/Customer/CancelledOrders";
 import CustomerOrderDetails from "../pages/Customer/CustomerOrderDetails";
 import TodayReceivedOrders from "../pages/Customer/TodayReceivedOrders";
 import FinancialSummary from '../pages/FinancialSummary/FinancialSummary';
+import CustomerProfile from '../pages/Profile/CustomerProfile'
+import MainLayout from "../Dashboard/Admin/MainLayout";
+import OrderCompleted from "../pages/Deliveryman/OrderCompleted";
 
 const router = createBrowserRouter([
     {
@@ -47,7 +50,8 @@ const router = createBrowserRouter([
                 path: "/adminDashboard",
                 element: <AdminDashboard />,
                 children: [
-                    { index: true, element: <AllPlacedOrders /> },
+                    { index: true, element: <MainLayout /> },
+                    { path: "placedOrders", element: <AllPlacedOrders /> },
                     { path: "manageProducts", element: <ManageProducts /> },
                     { path: "processingOrders", element: <ProcessingOrders /> },
                     { path: "assignedOrders", element: <AssignedOrders /> },
@@ -77,13 +81,17 @@ const router = createBrowserRouter([
                     { path: "cancelled", element: <CancelledOrders /> },
                     { path: "cart", element: <Cart /> },
                     {
-                        path : "todaysReceivedOrders",
-                        element : <TodayReceivedOrders></TodayReceivedOrders>
+                        path: "todaysReceivedOrders",
+                        element: <TodayReceivedOrders></TodayReceivedOrders>
                     },
                     {
                         path: "trackOrderDetails/:Id",
                         element: <CustomerOrderDetails />
                     },
+                    {
+                        path : "customerProfile",
+                        element : <CustomerProfile/>
+                    }
                 ],
             }
         ]
@@ -96,7 +104,8 @@ const router = createBrowserRouter([
                 element: <DeliverymanDashboard />,
                 children: [
                     { index: true, element: <AssignedOrders /> },
-                    { path: "onTheWay", element: <OnTheWayOrders></OnTheWayOrders> }
+                    { path: "onTheWay", element: <OnTheWayOrders></OnTheWayOrders> },
+                    { path: "orderCompleted", element: <OrderCompleted/> }
                 ],
             }
         ]

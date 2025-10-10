@@ -13,8 +13,10 @@ namespace PresentationAPI.Controllers
     [RoutePrefix("api/customer")]   
     public class CustomerController : ApiController
     {
+        [Logged("Customer")]
         [HttpGet]
         [Route("all")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
         public HttpResponseMessage Get()
         {
             try
@@ -28,8 +30,10 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Customer")]
         [HttpGet]
         [Route("{id}")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
         public HttpResponseMessage Get(int id)
         {
             try

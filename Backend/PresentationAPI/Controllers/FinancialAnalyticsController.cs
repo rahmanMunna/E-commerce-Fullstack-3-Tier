@@ -14,10 +14,45 @@ namespace PresentationAPI.Controllers
     [RoutePrefix("api/financial")]
     public class FinancialAnalyticsController : ApiController
     {
-        //[Logged("Admin")]
+
+        [Logged("Admin")]
         [HttpGet]
-        [Route("summary")]
+        [Route("todayTotalSale")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage TodayTotalSale()
+        {
+            try
+            {
+                var result = FinanciaService.TodayTotalSale();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [Logged("Admin")]
+        [HttpGet]
+        [Route("todayTotalRefund")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage TodayTotalRefund()
+        {
+            try
+            {
+                var result = FinanciaService.TodayTotalRefund();
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [Logged("Admin")]
+        [HttpPost]
+        [Route("summary")]
+        [EnableCors(origins: "*", headers: "*", methods: "POST")]
         public HttpResponseMessage Summary(DateRange dateRange)
         {
             try
@@ -29,6 +64,23 @@ namespace PresentationAPI.Controllers
             catch(Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);   
+            }
+        }
+
+        [Logged("Admin")]
+        [HttpGet]
+        [Route("sales/weekly")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage SalesWeekly()
+        {
+            try
+            {
+                var summary = FinanciaService.GetSalesWeekly();
+                return Request.CreateResponse(HttpStatusCode.OK, summary);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
     }

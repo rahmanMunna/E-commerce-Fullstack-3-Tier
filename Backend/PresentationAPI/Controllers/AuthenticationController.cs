@@ -32,7 +32,12 @@ namespace PresentationAPI.Controllers
                 //};
                 //var response = Request.CreateResponse(HttpStatusCode.OK, new { message = "Login successful",role = token.User.Role,userId = token.UserId });
                 //response.Headers.AddCookies(new[] { cookie });
-                return Request.CreateResponse(HttpStatusCode.OK, new { tkey = token.Tkey,role = token.User.Role,userId = token.UserId});
+                if (token != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new { tkey = token.Tkey, role = token.User.Role, userId = token.UserId });
+                }
+                return Request.CreateResponse(HttpStatusCode.NotFound, new {Msg = "Invalid userId or password" });   
+
 
             }
             catch(Exception ex)

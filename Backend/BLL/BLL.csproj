@@ -93,6 +93,8 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ConfirmOrderResult.cs" />
     <Compile Include="Models\FinancialSummary.cs" />
+    <Compile Include="Models\SalesWeekly.cs" />
+    <Compile Include="Models\TopSellingProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthentiicationService.cs" />
     <Compile Include="Services\CustomerService.cs" />

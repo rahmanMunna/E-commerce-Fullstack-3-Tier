@@ -30,6 +30,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin", "Deliveryman")]
         [HttpGet]
         [Route("{id}")]
         public HttpResponseMessage Get(int id)
@@ -45,6 +46,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
+        [Logged("Admin", "Deliveryman")]
         [HttpGet]
         [Route("user/{uId}")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]
@@ -53,6 +55,24 @@ namespace PresentationAPI.Controllers
             try
             {
                 var response = DeliverymanService.GetByUserId(uId);
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [Logged("Admin", "Deliveryman")]
+        [HttpGet]
+        [Route("completedOrders")]
+        [EnableCors(origins: "*", headers: "*", methods: "GET")]
+        public HttpResponseMessage CompletedOrders()
+        {
+            try
+            {
+                var tKey = Request.Headers.Authorization.ToString();    
+                var response = DeliverymanService.CompletedOrders(tKey);
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception ex)

@@ -21,11 +21,11 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
     (response) => {
-        // console.log("✅ Response:", response);
+        // console.log(" Response:", response);
         return response;
     },
     (error) => {
-        console.error("❌ Error:", error);
+        // console.error("Error:", error);
         return Promise.reject(error);
     }
 );

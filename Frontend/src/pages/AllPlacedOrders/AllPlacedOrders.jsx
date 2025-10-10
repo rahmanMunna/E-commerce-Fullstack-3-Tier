@@ -29,8 +29,8 @@ const AllPlacedOrders = () => {
         loadData()
     }, []);
 
-   
-    
+
+
 
 
     return (
@@ -51,16 +51,22 @@ const AllPlacedOrders = () => {
                         placedOrders.length > 0 &&
                         placedOrders.map((placedOrder, idx) => {
                             return (
-                                <>
-                                    <CancelButtonModal loadData={loadData} key={placedOrder.Id}  oId={placedOrder.Id}></CancelButtonModal>
-                                    <OrdersTable key={idx} order={placedOrder} ></OrdersTable>
-                                </>
+                                <OrdersTable key={idx} order={placedOrder} ></OrdersTable>
+
                             )
                         })
                     }
                 </tbody>
 
             </table>
+            {placedOrders.map((placedOrder) => (
+                <CancelButtonModal
+                    key={`modal-${placedOrder.Id}`}
+                    loadData={loadData}
+                    oId={placedOrder.Id}
+                />
+            ))}
+
 
         </div>
     );

@@ -47,6 +47,10 @@ const AdminSidebar = () => {
                     📦 Manage Products
                 </NavLink>
 
+                <NavLink to="/adminDashboard/placedOrders" className={linkCss}>
+                    🛒 Placed Orders
+                </NavLink>
+
                 <NavLink to="/adminDashboard/processingOrders" className={linkCss}>
                     ⚙️ Processing
                 </NavLink>

@@ -53,7 +53,7 @@ const DeliverymanSidebar = () => {
                 </NavLink>
 
                 <NavLink
-                    to="/"
+                    to="orderCompleted"
                     end
                     className={linkCss}
                 >

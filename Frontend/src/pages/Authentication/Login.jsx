@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
 
     const { requestToServer, getUserByUserId } = useContext(AuthContext);
+    const errorRef = useRef();
     const navigate = useNavigate();
 
 
@@ -16,7 +17,7 @@ const Login = () => {
         const password = form.get("Password");
 
         if (userId === "" || password === "") {
-            console.log("Empty")
+            errorRef.current.innerText = "Please fill all the field"
             return
         }
 
@@ -39,24 +40,21 @@ const Login = () => {
                 return res.json()
             })
             .then(data => {
-                if (data === null) {
-                    console.log("Login Error")
-                    return
+                if (data !== null) {
+                    errorRef.current.innerText = "";
+                    alert("Login Success")
+                    console.log(data)
+                    localStorage.setItem("token", data?.tkey);
+                    localStorage.setItem("role", data?.role);
+                    localStorage.setItem("userId", data?.userId);
+
+                    redirectToDashboard()
+                    getUserByUserId()
                 }
-                alert("Login Success")
-                console.log(data)
-                localStorage.setItem("token", data.tkey);
-                localStorage.setItem("role", data.role);
-                localStorage.setItem("userId", data.userId);
-
-                redirectToDashboard()
-                getUserByUserId()
-
-
             })
             .catch(err => {
-                console.error("Login error", err)
-
+                errorRef.current.innerText = err.message;
+                console.error("Login error", err.message)
             })
 
     }
@@ -119,14 +117,14 @@ const Login = () => {
                         className="w-full px-4 py-2 rounded-lg bg-white/30 text-white placeholder-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-400 transition"
                     />
                 </div>
-
+                <p className="text-black text-center mb-2" ref={errorRef}></p>
                 {/* Button */}
                 <button
                     type="submit"
                     className="w-full py-2 px-4 
-          bg-gradient-to-r from-pink-500 to-purple-500 
-          rounded-lg font-semibold text-white shadow-md transform hover:scale-105 
-          hover:shadow-xl transition hover:cursor-pointer"
+                                bg-gradient-to-r from-pink-500 to-purple-500 
+                                rounded-lg font-semibold text-white shadow-md transform hover:scale-105 
+                                hover:shadow-xl transition hover:cursor-pointer"
                 >
                     Login
                 </button>

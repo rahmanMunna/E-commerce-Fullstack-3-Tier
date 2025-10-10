@@ -1,4 +1,8 @@
-﻿using DAL;
+﻿using BLL.DTOs;
+using BLL.Helper;
+using BLL.Models;
+using DAL;
+using DAL.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +42,12 @@ namespace BLL.Services
             return totalOrders.Count;
         }
 
+        public static int TodayTotalCompletedOrders()
+        {
+           var orders = DataAccessFactory.OrderData().Get();
+           var todayCompletedOrders = orders.Where(o => o.Date.Date == DateTime.Now.Date && o.OrderStatusID == 5).ToList();
+           return todayCompletedOrders.Count;
+        }
         public static int TotalCancelledOrders(DateTime startDate, DateTime endDate)
         {
             var orders = DataAccessFactory.OrderData().Get();
@@ -92,5 +102,50 @@ namespace BLL.Services
             return totalOrders > 0 ? sales / totalOrders : 0;
         }
 
+        public static List<OrderDTO> LatestOrders(int count)
+        {
+            var orders = DataAccessFactory.OrderData().Get();   
+            var latestOrder = orders.
+                                     Where(o => o.OrderStatusID != 5 && o.OrderStatusID != 6) 
+                                     .OrderByDescending(x => x.Id)
+                                    .Take(count)
+                                    .OrderBy(x => x.Id)
+                                    .ToList();
+            return MapperHelper.GetMapper().Map<List<OrderDTO>>(latestOrder); 
+        }
+
+        public static List<ProductDTO> LowStockProducts()
+        {
+            var products = DataAccessFactory.ProductData().Get();   
+            var lowStock = products.Where(p => p.StockQty <= 5).ToList();
+
+            return MapperHelper.GetMapper().Map<List<ProductDTO>>(lowStock); 
+
+        }
+        public static List<TopSellingProduct> TopSellingProducts(int count,int days)
+        {
+            var date = DateTime.Now.AddDays(-days);
+
+            var orderDetails = DataAccessFactory.OrderDetailData().Get();
+            var topProducts = orderDetails
+                                          .Where(od => od.Order.Date >= date && od.Order.OrderStatusID == 5)
+                                          .GroupBy(od => od.ProductId)
+                                          .Select(g => new TopSellingProduct()
+                                          {
+                                              Id = g.Key,
+                                              Name = g.FirstOrDefault().Product.Name,
+                                              Price = g.FirstOrDefault().Product.Price,
+                                              Discount = g.FirstOrDefault().Product.Discount,
+                                              Category = g.FirstOrDefault().Product.Category.Name,
+                                              TotalSold = g.Sum(od => od.Qty),
+                                              TotalRevenue = g.Sum(od => od.OrderPrice) * g.Sum(od => od.Qty)
+                                          })
+                                          .OrderByDescending(x => x.TotalSold)
+                                          .Take(count)
+                                          .ToList();
+            return topProducts;   
+
+
+        }
     }
 }
