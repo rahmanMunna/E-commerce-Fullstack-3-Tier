@@ -66,4 +66,4 @@ The project follows 3-tier architecture, adheres to SOLID principles, and implem
 🔗 GitHub Repository: E-commerce-Fullstack
 
 ## Author
-*** Md. Habibur Rahman Munna ***
+**Md. Habibur Rahman Munna**
