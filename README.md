@@ -65,7 +65,11 @@
 🔗 GitHub Repository: [E-commerce-Fullstack](https://github.com/rahmanMunna/E-commerce-Fullstack-3-Tier.git)
 
 ## Project UI
-- Visit : (./ProjectUI.md)
+<p align="">
+  <a href="./ProjectUI.md" target="_blank">
+    <b>➡️ View Full Project UI</b>
+  </a>
+</p>
 
 ## Author
 **Md. Habibur Rahman Munna**
