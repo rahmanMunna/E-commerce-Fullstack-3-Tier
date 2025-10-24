@@ -63,7 +63,7 @@ The project follows 3-tier architecture, adheres to SOLID principles, and implem
 - View today’s total completed orders
 
 ## Project Link
-🔗 GitHub Repository: E-commerce-Fullstack
+🔗 GitHub Repository: [E-commerce-Fullstack](https://github.com/rahmanMunna/E-commerce-Fullstack-3-Tier.git)
 
 ## Author
 **Md. Habibur Rahman Munna**
