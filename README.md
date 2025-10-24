@@ -62,12 +62,6 @@ The project follows 3-tier architecture, adheres to SOLID principles, and implem
 - Track all delivered orders
 - View today’s total completed orders
 
-## Project UI:
-<p align="center">
-  <img src="../../SS/Login.png" width="700" alt="Homepage UI">
-</p>
-
-
 ## Project Link
 🔗 GitHub Repository: E-commerce-Fullstack
 
