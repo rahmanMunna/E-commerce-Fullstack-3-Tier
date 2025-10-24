@@ -118,7 +118,7 @@ namespace BLL.Services
                                                 ).ToList();
             return MapperHelper.GetMapper().Map<List<OrderDTO>>(todaysOrders);  
         }
-        public static List<OrderDTO> TrackOrders()
+        public static List<OrderDTO> GetTrackOrders()
         {
             //assigned or on the way or delivered
             var orders = Get(); 

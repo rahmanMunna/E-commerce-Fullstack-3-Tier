@@ -46,7 +46,7 @@ namespace PresentationAPI.Controllers
             }
         }
 
-        [Logged("Admin", "Deliveryman")]
+        
         [HttpGet]
         [Route("user/{uId}")]
         [EnableCors(origins: "*", headers: "*", methods: "GET")]

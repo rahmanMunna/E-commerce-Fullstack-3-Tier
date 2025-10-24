@@ -6,14 +6,16 @@ const OrderCompleted = () => {
     const [orderCompleted, setOrderCompleted] = useState([]);
     const [todayOrderCompleted, setTodayOrderCompleted] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
 
     const filterTodayOrderCompleted = (orders) => {
         const today = new Date().toISOString().split("T")[0];
+             
         const todayCompleted = orders.filter((order) => {
             const orderDate = order?.Date?.split("T")[0];
             return orderDate === today;
         });
+        
         setTodayOrderCompleted(todayCompleted);
     };
 
@@ -24,13 +26,13 @@ const OrderCompleted = () => {
             if (res.status === 200 && res.data) {
                 setOrderCompleted(res.data);
                 filterTodayOrderCompleted(res.data);
+                setLoading(false)
             } else {
                 throw new Error("Server Issue");
             }
-        } catch (err) {
+        }
+        catch (err) {
             console.error(err.message);
-        } finally {
-            setLoading(false);
         }
     };
 

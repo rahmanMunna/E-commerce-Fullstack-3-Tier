@@ -3,56 +3,24 @@
   "WorkspaceRootPath": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\services\\deliverymanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\services\\deliverymanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\deliverymancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\deliverymancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\dal\\dataaccessfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9066B33-8125-49D7-A2FE-9721F9B9F6E5}|DAL\\DAL.csproj|solutionrelative:dal\\dataaccessfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\presentationapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\bll\\services\\financiaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\services\\financiaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\bll\\services\\orderanalyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\services\\orderanalyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\financialanalyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\financialanalyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\presentationapi\\controllers\\orderanalyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\orderanalyticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|e:\\asp.net project\\ecommercewebapi\\backend\\presentationapi\\controllers\\deliverymancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\deliverymancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\bll\\services\\orderanalyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\services\\orderanalyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\presentationapi\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\bll\\models\\salesweekly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\models\\salesweekly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\bll\\models\\topsellingproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\models\\topsellingproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\bll\\helper\\mapperhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\helper\\mapperhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\bll\\models\\financialsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9765D89E-7945-4E53-AB15-839FF219C5C0}|BLL\\BLL.csproj|solutionrelative:bll\\models\\financialsummary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\presentationapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCB24F51-E70F-43A2-B0EF-4DA49FE75217}|PresentationAPI\\PresentationAPI.csproj|solutionrelative:presentationapi\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -67,27 +35,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DeliverymanService.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\DeliverymanService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\DeliverymanService.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\DeliverymanService.cs",
-              "RelativeToolTip": "BLL\\Services\\DeliverymanService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAmwCsAAAAIAAAAAAAAAA==",
+              "Title": "OrderAnalyticsService.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\OrderAnalyticsService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\OrderAnalyticsService.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\OrderAnalyticsService.cs",
+              "RelativeToolTip": "BLL\\Services\\OrderAnalyticsService.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAawIYAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T14:57:06.869Z",
+              "WhenOpened": "2025-10-24T08:21:21.961Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FinancialAnalyticsController.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
+              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
+              "RelativeToolTip": "PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAYwE0AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T08:17:54.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "DeliverymanController.cs",
               "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\DeliverymanController.cs",
               "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\DeliverymanController.cs",
               "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\DeliverymanController.cs",
               "RelativeToolTip": "PresentationAPI\\Controllers\\DeliverymanController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAgwEoAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T14:55:39.083Z",
+              "WhenOpened": "2025-10-12T06:40:02.429Z",
               "EditorCaption": ""
             },
             {
@@ -98,136 +79,21 @@
               "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\CustomerController.cs",
               "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\CustomerController.cs",
               "RelativeToolTip": "PresentationAPI\\Controllers\\CustomerController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADIAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwDEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-10T11:21:39.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SalesWeekly.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Models\\SalesWeekly.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\SalesWeekly.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Models\\SalesWeekly.cs",
-              "RelativeToolTip": "BLL\\Models\\SalesWeekly.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T15:54:10.716Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TopSellingProduct.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Models\\TopSellingProduct.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\TopSellingProduct.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Models\\TopSellingProduct.cs",
-              "RelativeToolTip": "BLL\\Models\\TopSellingProduct.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T12:43:22.615Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MapperHelper.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Helper\\MapperHelper.cs",
-              "RelativeDocumentMoniker": "BLL\\Helper\\MapperHelper.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Helper\\MapperHelper.cs",
-              "RelativeToolTip": "BLL\\Helper\\MapperHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T12:40:06.497Z"
+              "WhenOpened": "2025-10-12T06:43:27.746Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AuthenticationController.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "RelativeToolTip": "PresentationAPI\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAjwDMAAABBAAAAAAAAAA==",
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\OrderController.cs",
+              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "PresentationAPI\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAADwv5UAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T10:32:27.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "FinancialSummary.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Models\\FinancialSummary.cs",
-              "RelativeDocumentMoniker": "BLL\\Models\\FinancialSummary.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Models\\FinancialSummary.cs",
-              "RelativeToolTip": "BLL\\Models\\FinancialSummary.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T17:47:26.603Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FinancialAnalyticsController.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
-              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
-              "RelativeToolTip": "PresentationAPI\\Controllers\\FinancialAnalyticsController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwBkAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T17:27:25.933Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "OrderAnalyticsService.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\OrderAnalyticsService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\OrderAnalyticsService.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\OrderAnalyticsService.cs",
-              "RelativeToolTip": "BLL\\Services\\OrderAnalyticsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwC8AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T17:01:02.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FinanciaService.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\FinanciaService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\FinanciaService.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\BLL\\Services\\FinanciaService.cs",
-              "RelativeToolTip": "BLL\\Services\\FinanciaService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAC0AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T16:52:48.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderAnalyticsController.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\OrderAnalyticsController.cs",
-              "RelativeDocumentMoniker": "PresentationAPI\\Controllers\\OrderAnalyticsController.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\PresentationAPI\\Controllers\\OrderAnalyticsController.cs",
-              "RelativeToolTip": "PresentationAPI\\Controllers\\OrderAnalyticsController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACAAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-08T14:59:31.94Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DataAccessFactory.cs",
-              "DocumentMoniker": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\DataAccessFactory.cs",
-              "RelativeDocumentMoniker": "DAL\\DataAccessFactory.cs",
-              "ToolTip": "E:\\ASP.NET Project\\EcommerceWebAPI\\Backend\\DAL\\DataAccessFactory.cs",
-              "RelativeToolTip": "DAL\\DataAccessFactory.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAQwBUAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T18:32:45.377Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T06:29:52.375Z"
             }
           ]
         }

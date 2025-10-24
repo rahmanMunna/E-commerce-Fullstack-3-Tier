@@ -90,6 +90,12 @@
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Helper\MapperHelper.cs" />
+    <Compile Include="Interfaces\Orders\IOrderQueryService.cs" />
+    <Compile Include="Interfaces\Orders\IOrderPlacementService.cs" />
+    <Compile Include="Interfaces\Orders\IOrderPricingService.cs" />
+    <Compile Include="Interfaces\Orders\IOrderStatusService.cs" />
+    <Compile Include="Interfaces\Orders\IOrderTrackingService.cs" />
+    <Compile Include="Interfaces\Orders\IStockService.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ConfirmOrderResult.cs" />
     <Compile Include="Models\FinancialSummary.cs" />

@@ -27,35 +27,48 @@ const ProcessingOrders = () => {
     }, [])
 
     return (
-        <div className="container mx-auto">
-            <h1>Placed orders</h1>
-            <table className="min-w-full border border-gray-200 shadow-sm rounded-lg overflow-hidden">
-                <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm uppercase font-semibold">
-                    <tr>
-                        <th className="px-6 py-3 text-left">Order ID</th>
-                        <th className="px-6 py-3 text-left">Order Date</th>
-                        <th className="px-6 py-3 text-left">Customer</th>
-                        <th className="px-6 py-3 text-left">Status</th>
-                        <th className="px-6 py-3 text-right">Actions</th>
-                    </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 bg-white">
-                    {
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            {/* Header */}
+            <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center border-b pb-4">
+                Placed Orders
+            </h1>
 
-                        ordersProcessing.map((orderProcessing, idx) => {
-                            return (
-                                <>
-                                    <CancelButtonModal loadData={loadData} key={orderProcessing.Id} oId={orderProcessing.Id}></CancelButtonModal>
-                                    <OrdersTable key={idx} order={orderProcessing} ></OrdersTable>
-                                </>
-                            )
-                        })
+            {/* Table */}
+            <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+                <table className="min-w-full table-auto border-collapse">
+                    <thead className="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 text-sm uppercase font-semibold">
+                        <tr>
+                            <th className="px-6 py-3 text-left">Order ID</th>
+                            <th className="px-6 py-3 text-left">Order Date</th>
+                            <th className="px-6 py-3 text-left">Customer</th>
+                            <th className="px-6 py-3 text-left">Status</th>
+                            <th className="px-6 py-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                        {ordersProcessing.length > 0 ? (
+                            ordersProcessing.map((orderProcessing) => (
+                                <OrdersTable key={`order-${orderProcessing.Id}`} order={orderProcessing} />
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="5" className="text-center py-6 text-gray-500 italic">
+                                    No orders in processing.
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
 
-                    }
-                </tbody>
-
-            </table>
-
+            {/* Modals */}
+            {ordersProcessing.map((orderProcessing) => (
+                <CancelButtonModal
+                    key={`modal-${orderProcessing.Id}`}
+                    loadData={loadData}
+                    oId={orderProcessing.Id}
+                />
+            ))}
         </div>
     );
 };

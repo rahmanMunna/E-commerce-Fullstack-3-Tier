@@ -128,7 +128,7 @@ namespace BLL.Services
 
             var orderDetails = DataAccessFactory.OrderDetailData().Get();
             var topProducts = orderDetails
-                                          .Where(od => od.Order.Date >= date && od.Order.OrderStatusID == 5)
+                                          .Where(od => od.Order.Date <= date && od.Order.OrderStatusID == 5)
                                           .GroupBy(od => od.ProductId)
                                           .Select(g => new TopSellingProduct()
                                           {

@@ -55,17 +55,17 @@ const AdminSidebar = () => {
                     ⚙️ Processing
                 </NavLink>
 
-                <NavLink to="/adminDashboard/deliveredOrders" className={linkCss}>
+                {/* <NavLink to="/adminDashboard/deliveredOrders" className={linkCss}>
                     ✅ Delivered
-                </NavLink>
+                </NavLink> */}
 
                 <NavLink to="/adminDashboard/trackOrders" className={linkCss}>
                     🚚 Track  Orders
                 </NavLink>
 
-                <NavLink to="/adminDashboard/allOrders" className={linkCss}>
+                {/* <NavLink to="/adminDashboard/allOrders" className={linkCss}>
                     📋 All Orders
-                </NavLink>
+                </NavLink> */}
 
                 <NavLink to="/adminDashboard/financial" className={linkCss}>
                     💰 Financial

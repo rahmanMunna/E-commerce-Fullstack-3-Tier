@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
 
         const userId = localStorage.getItem('userId');
         let url;
+        console.log(userId)
     
         if (localStorage.getItem("role") === "Customer") {
             url = "customer/user";
@@ -24,6 +25,7 @@ export const AuthProvider = ({ children }) => {
         }
 
         // console.log(url)
+        
         fetch(`https://localhost:44381/api/${url}/${userId}`)
             .then(res => {
                 return res.json();

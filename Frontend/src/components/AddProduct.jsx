@@ -14,28 +14,23 @@ const AddProduct = () => {
     const loadData = () => {
         const url = "category/all";
         api.get(url)
-        .then(res =>{
-            if(res.status !== 200){
-                alert("Unauthorized Action");
-                return;
-            }
-            setCategories(res.data);
-        })
+            .then(res => {
+                if (res.status !== 200) {
+                    alert("Unauthorized Action");
+                    return;
+                }
+                setCategories(res.data);
+            })
     }
     useEffect(loadData, []);
 
 
     async function addProduct(product) {
-        let res = await fetch("https://localhost:44381/api/product/add", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(product)
-        });
-        let data = res.json();
+        let res = await api.post("product/add", JSON.stringify(product))
+        const data = res.data;
         console.log(data)
-        if(data){
+        if (data) {
+            console.log(data)
             toast.success("Product added successfully");
         }
 

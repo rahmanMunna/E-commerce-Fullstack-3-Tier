@@ -10,6 +10,7 @@ const AssignedOrders = () => {
     const [assignedOrders, setAssignedOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
+    
 
     useEffect(() => {
         if (user == null)

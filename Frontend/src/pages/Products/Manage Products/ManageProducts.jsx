@@ -23,25 +23,30 @@ const ManageProducts = () => {
     useEffect(loadData, []);
 
     return (
-        <div className="space-y-10 p-6 bg-gray-50">
-            <h1 className="text-center">Manage Product</h1>
-            <div className="text-end ">
-                <Link to="addProduct" className="btn btn-neutral">Add</Link>
+        <div className="space-y-6 p-8 bg-gray-50 min-h-screen">
+            {/* Header Section */}
+            <h1 className="text-3xl text-center font-extrabold bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Manage Products
+            </h1>
+            <div className="text-end border-b-2 py-3">
+                <Link to="addProduct" className="btn btn-primary px-5 py-2 rounded-md shadow-sm">
+                    + Add Product
+                </Link>
             </div>
-            {
-                products.length > 0 &&
+            {/* Product Categories */}
+            {products.length > 0 ? (
                 products.map((product, idx) => (
-                    <div key={idx} className="bg-white shadow-md rounded-2xl p-6">
+                    <div key={idx} className="bg-white shadow-lg rounded-xl p-6 space-y-4">
                         {/* Category Header */}
-                        <h1 className="text-2xl text-center bg-blue-50 py-4 font-semibold text-gray-800 border-b pb-3 mb-4">
+                        <h2 className="text-xl text-center font-semibold text-gray-700 border-b pb-2">
                             {product.CategoryName}
-                        </h1>
+                        </h2>
 
                         {/* Product Table */}
                         <div className="overflow-x-auto">
-                            <table className="table-auto w-full border-collapse">
+                            <table className="min-w-full table-auto border-collapse">
                                 <thead>
-                                    <tr className="bg-gray-100 text-left text-gray-700 text-sm uppercase">
+                                    <tr className="bg-gray-100 text-gray-600 text-sm uppercase tracking-wider">
                                         <th className="p-3 border">ID</th>
                                         <th className="p-3 border">Name</th>
                                         <th className="p-3 border">Stock</th>
@@ -60,7 +65,9 @@ const ManageProducts = () => {
                         </div>
                     </div>
                 ))
-            }
+            ) : (
+                <div className="text-center text-gray-500 italic">No products available.</div>
+            )}
         </div>
 
 

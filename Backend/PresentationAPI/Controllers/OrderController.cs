@@ -193,7 +193,7 @@ namespace PresentationAPI.Controllers
         {
             try
             {
-                var result = OrderService.TrackOrders();
+                var result = OrderService.GetTrackOrders();
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
