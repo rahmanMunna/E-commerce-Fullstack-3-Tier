@@ -1,4 +1,4 @@
-# This project follows a 3-tier architecture and adheres to SOLID principles to ensure scalability, maintainability, and clean code structure. It features a custom token-based authentication system with role-based authorization, along with protected routes in React and Context API for secure state management. Additionally, it incorporates AutoMapper, Middleware, and Axios Interceptors to enable efficient data handling, enhance security,
+# - This project follows a 3-tier architecture and adheres to SOLID principles to ensure scalability, maintainability, and clean code structure. It features a custom token-based authentication system with role-based authorization, along with protected routes in React and Context API for secure state management. Additionally, it incorporates AutoMapper, Middleware, and Axios Interceptors to enable efficient data handling, enhance security,
 
 ## Technologies Used
 ### Frontend
