@@ -15,7 +15,7 @@
 - SOLID Principles
 - DTO Pattern for secure data transfer
 - AutoMapper for object mapping between DTOs and entities
-- Custom Middleware for error handling, logging, and request validation
+- Custom Middleware for logging, and request validation
 - Custom Token-Based Authentication & Role-Based Authorization
 
 ## Design Principles
